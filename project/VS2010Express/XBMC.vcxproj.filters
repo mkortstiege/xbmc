@@ -3062,6 +3062,9 @@
     <ClCompile Include="..\..\xbmc\filesystem\win32\Win32SMBDirectory.cpp">
       <Filter>filesystem\win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\xbmc\utils\MarkWatchedJob.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\xbmc\win32\pch.h">
@@ -5984,6 +5987,9 @@
       <Filter>filesystem\win32</Filter>
     </ClInclude>
     <ClInclude Include="..\..\xbmc\utils\params_check_macros.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\utils\MarkWatchedJob.h">
       <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
