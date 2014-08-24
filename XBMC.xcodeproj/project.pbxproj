@@ -1113,6 +1113,9 @@
 		AE84CB5A15A5B8A600A3810E /* TagLibVFSStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE84CB5915A5B8A600A3810E /* TagLibVFSStream.cpp */; };
 		AE89ACA61621DAB800E17DBC /* DVDDemuxBXA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE89ACA41621DAB800E17DBC /* DVDDemuxBXA.cpp */; };
 		AEC0083115ACAC6E0099888C /* TagLoaderTagLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEC0083015ACAC6E0099888C /* TagLoaderTagLib.cpp */; };
+		B5011E3C19AA4989005ADF89 /* MarkWatchedJob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5011E3B19AA4989005ADF89 /* MarkWatchedJob.cpp */; };
+		B5011E3D19AA4989005ADF89 /* MarkWatchedJob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5011E3B19AA4989005ADF89 /* MarkWatchedJob.cpp */; };
+		B5011E3E19AA4989005ADF89 /* MarkWatchedJob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5011E3B19AA4989005ADF89 /* MarkWatchedJob.cpp */; };
 		C807114D135DB5CC002F601B /* InputOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C807114B135DB5CC002F601B /* InputOperations.cpp */; };
 		C84828C0156CFCD8005A996F /* PVRClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8482874156CFCD8005A996F /* PVRClient.cpp */; };
 		C84828C1156CFCD8005A996F /* PVRClients.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8482876156CFCD8005A996F /* PVRClients.cpp */; };
@@ -4645,6 +4648,8 @@
 		AE89ACA51621DAB800E17DBC /* DVDDemuxBXA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDDemuxBXA.h; sourceTree = "<group>"; };
 		AEC0083015ACAC6E0099888C /* TagLoaderTagLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TagLoaderTagLib.cpp; sourceTree = "<group>"; };
 		AEC0083315ACAC7C0099888C /* TagLoaderTagLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagLoaderTagLib.h; sourceTree = "<group>"; };
+		B5011E3A19AA496D005ADF89 /* MarkWatchedJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkWatchedJob.h; sourceTree = "<group>"; };
+		B5011E3B19AA4989005ADF89 /* MarkWatchedJob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarkWatchedJob.cpp; sourceTree = "<group>"; };
 		B542632E19917D3500726998 /* params_check_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = params_check_macros.h; sourceTree = "<group>"; };
 		C807114B135DB5CC002F601B /* InputOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputOperations.cpp; sourceTree = "<group>"; };
 		C807114C135DB5CC002F601B /* InputOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputOperations.h; sourceTree = "<group>"; };
@@ -9650,7 +9655,9 @@
 		E38E1E220D25F9FD00618676 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				B5011E3B19AA4989005ADF89 /* MarkWatchedJob.cpp */,
 				B542632E19917D3500726998 /* params_check_macros.h */,
+				B5011E3A19AA496D005ADF89 /* MarkWatchedJob.h */,
 				F5CC22FB18150065006B5E91 /* ActorProtocol.cpp */,
 				F5CC22FC18150065006B5E91 /* ActorProtocol.h */,
 				E38E1E230D25F9FD00618676 /* AlarmClock.cpp */,
@@ -11642,6 +11649,7 @@
 				7CCDA86C192756250074CF51 /* NptZip.cpp in Sources */,
 				7CCDA86F192756250074CF51 /* NptTlsTrustAnchor_Base_0000.cpp in Sources */,
 				7CCDA872192756250074CF51 /* NptTlsTrustAnchor_Base_0001.cpp in Sources */,
+				B5011E3C19AA4989005ADF89 /* MarkWatchedJob.cpp in Sources */,
 				7CCDA875192756250074CF51 /* NptTlsTrustAnchor_Base_0002.cpp in Sources */,
 				7CCDA878192756250074CF51 /* NptTlsTrustAnchor_Base_0003.cpp in Sources */,
 				7CCDA87B192756250074CF51 /* NptTlsTrustAnchor_Base_0004.cpp in Sources */,
@@ -12492,6 +12500,7 @@
 				DFF0F3B317528350002DA3A4 /* Implementation.cpp in Sources */,
 				DFF0F3B417528350002DA3A4 /* Atomics.cpp in Sources */,
 				DFF0F3B517528350002DA3A4 /* Event.cpp in Sources */,
+				B5011E3E19AA4989005ADF89 /* MarkWatchedJob.cpp in Sources */,
 				DFF0F3B617528350002DA3A4 /* LockFree.cpp in Sources */,
 				DFF0F3B717528350002DA3A4 /* SystemClock.cpp in Sources */,
 				DFF0F3B817528350002DA3A4 /* Thread.cpp in Sources */,
@@ -14168,6 +14177,7 @@
 				7CCDAA20192756250074CF51 /* NptTlsTrustAnchor_Extended_0008.cpp in Sources */,
 				7CCDAA23192756250074CF51 /* NptTlsTrustAnchor_Extended_0009.cpp in Sources */,
 				7CCDAA26192756250074CF51 /* NptTlsTrustAnchor_Extended_0010.cpp in Sources */,
+				B5011E3D19AA4989005ADF89 /* MarkWatchedJob.cpp in Sources */,
 				7CCDAA29192756250074CF51 /* NptTlsTrustAnchor_Extended_0011.cpp in Sources */,
 				7CCDAA2C192756250074CF51 /* NptTlsTrustAnchor_Extended_0012.cpp in Sources */,
 				7CCDAA2F192756250074CF51 /* NptTlsDefaultTrustAnchorsBase.cpp in Sources */,
