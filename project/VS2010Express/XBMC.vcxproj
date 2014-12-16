@@ -170,6 +170,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lib\SlingboxLib\SlingboxLib.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\ActivityLog.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\AddonActivity.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\AddonManagementActivity.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\BaseActivity.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\MediaLibraryActivity.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\windows\GUIViewStateActivityLog.cpp" />
+    <ClCompile Include="..\..\xbmc\activity\windows\GUIWindowActivityLog.cpp" />
     <ClCompile Include="..\..\xbmc\addons\AddonCallbacks.cpp" />
     <ClCompile Include="..\..\xbmc\addons\AddonCallbacksAddon.cpp" />
     <ClCompile Include="..\..\xbmc\addons\AddonCallbacksCodec.cpp" />
@@ -285,6 +292,7 @@
     <ClCompile Include="..\..\xbmc\epg\GUIEPGGridContainer.cpp" />
     <ClCompile Include="..\..\xbmc\FileItem.cpp" />
     <ClCompile Include="..\..\xbmc\FileItemListModification.cpp" />
+    <ClCompile Include="..\..\xbmc\filesystem\ActivitiesDirectory.cpp" />
     <ClCompile Include="..\..\xbmc\filesystem\AddonsDirectory.cpp" />
     <ClCompile Include="..\..\xbmc\filesystem\ASAPFileDirectory.cpp" />
     <ClCompile Include="..\..\xbmc\filesystem\BlurayDirectory.cpp" />
@@ -824,6 +832,16 @@
     <ClCompile Include="..\..\xbmc\TextureCacheJob.cpp" />
     <ClCompile Include="..\..\xbmc\TextureDatabase.cpp" />
     <ClCompile Include="..\..\xbmc\DatabaseManager.cpp" />
+    <ClInclude Include="..\..\xbmc\activity\ActivityLog.h" />
+    <ClInclude Include="..\..\xbmc\activity\AddonActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\AddonManagementActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\BaseActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\IActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\MediaLibraryActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\NotificationActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\UniqueActivity.h" />
+    <ClInclude Include="..\..\xbmc\activity\windows\GUIViewStateActivityLog.h" />
+    <ClInclude Include="..\..\xbmc\activity\windows\GUIWindowActivityLog.h" />
     <ClInclude Include="..\..\xbmc\addons\AddonCallbacksCodec.h" />
     <ClInclude Include="..\..\xbmc\addons\AudioDecoder.h" />
     <ClInclude Include="..\..\xbmc\addons\ContextItemAddon.h" />
@@ -875,6 +893,7 @@
     <ClInclude Include="..\..\xbmc\dialogs\GUIDialogMediaFilter.h" />
     <ClInclude Include="..\..\xbmc\dialogs\GUIDialogSimpleMenu.h" />
     <ClInclude Include="..\..\xbmc\FileItemListModification.h" />
+    <ClInclude Include="..\..\xbmc\filesystem\ActivitiesDirectory.h" />
     <ClInclude Include="..\..\xbmc\filesystem\BlurayFile.h" />
     <ClInclude Include="..\..\xbmc\filesystem\HTTPFile.h" />
     <ClInclude Include="..\..\xbmc\filesystem\DAVCommon.h" />
