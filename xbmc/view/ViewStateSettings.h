@@ -23,6 +23,7 @@
 #include <string>
 
 #include "ViewState.h"
+#include "activity/IActivity.h"
 #include "guilib/GraphicContext.h"
 #include "settings/lib/ISubSettings.h"
 #include "settings/lib/Setting.h"
@@ -47,6 +48,14 @@ public:
   void CycleSettingLevel();
   SettingLevel GetNextSettingLevel() const;
 
+  ActivityLevel GetActivityLevel() const { return m_activityLevel; }
+  void SetActivityLevel(ActivityLevel activityLevel);
+  void CycleActivityLevel();
+  ActivityLevel GetNextActivityLevel() const;
+  bool ShowHigherActivityLevels() const { return m_activityShowHigherLevels; }
+  void SetShowHigherActivityLevels(bool showHigherActivityLevels) { m_activityShowHigherLevels = showHigherActivityLevels; }
+  void ToggleShowHigherActivityLevels() { m_activityShowHigherLevels = !m_activityShowHigherLevels; }
+
 protected:
   CViewStateSettings();
   CViewStateSettings(const CViewStateSettings&);
@@ -56,6 +65,8 @@ protected:
 private:
   std::map<std::string, CViewState*> m_viewStates;
   SettingLevel m_settingLevel;
+  ActivityLevel m_activityLevel;
+  bool m_activityShowHigherLevels;
   CCriticalSection m_critical;
 
   void AddViewState(const std::string& strTagName, int defaultView = DEFAULT_VIEW_LIST, SortBy defaultSort = SortByLabel);

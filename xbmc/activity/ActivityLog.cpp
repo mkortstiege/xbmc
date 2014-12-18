@@ -22,6 +22,8 @@
 #include "FileItem.h"
 #include "GUIUserMessages.h"
 #include "dialogs/GUIDialogKaiToast.h"
+#include "dialogs/GUIDialogSelect.h"
+#include "filesystem/ActivitiesDirectory.h"
 #include "guilib/GUIWindowManager.h"
 #include "settings/Settings.h"
 #include "threads/SingleLock.h"
@@ -221,7 +223,10 @@ void CActivityLog::OnSettingAction(const CSetting *setting)
   const std::string& settingId = setting->GetId();
   if (settingId == "activities.show")
   {
-    // TODO
+    std::vector<std::string> params;
+    params.push_back("activities://");
+    params.push_back("return");
+    g_windowManager.ActivateWindow(WINDOW_ACTIVITY_LOG, params);
   }
 }
 

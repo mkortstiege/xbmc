@@ -3678,6 +3678,7 @@ msgstr ""
 
 #empty string with id 1209
 
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
 msgctxt "#1210"
 msgid "Remove"
 msgstr ""
@@ -7003,6 +7004,36 @@ msgctxt "#14114"
 msgid "Show activity log"
 msgstr ""
 
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14115"
+msgid "Basic"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14116"
+msgid "Information"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14117"
+msgid "Warning"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14118"
+msgid "Error"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14119"
+msgid "Level: %s"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14120"
+msgid "Show higher levels"
+msgstr ""
+
 #empty strings from id 14115 to 15011
 
 #: xbmc/video/VideoDatabase.cpp
@@ -7791,6 +7822,7 @@ msgctxt "#19032"
 msgid "Timeline"
 msgstr ""
 
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
 msgctxt "#19033"
 msgid "Information"
 msgstr ""

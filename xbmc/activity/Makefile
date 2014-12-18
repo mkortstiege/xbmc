@@ -3,6 +3,8 @@ SRCS=ActivityLog.cpp \
      AddonManagementActivity.cpp \
      BaseActivity.cpp \
      MediaLibraryActivity.cpp \
+     windows/GUIViewStateActivityLog.cpp \
+     windows/GUIWindowActivityLog.cpp \
 
 LIB=activity.a
 
