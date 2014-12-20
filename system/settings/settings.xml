@@ -2924,6 +2924,32 @@
         </setting>
       </group>
     </category>
+    <category id="activities" label="14111" help="36423">
+      <group id="1">
+        <setting id="activities.enabled" type="boolean" label="14112" help="36436">
+          <level>1</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+        <setting id="activities.enablednotifications" type="boolean" parent="activities.enabled" label="14113" help="36437">
+          <level>1</level>
+          <default>false</default>
+          <dependencies>
+            <dependency type="enable" setting="activities.enabled" operator="is">true</dependency>
+          </dependencies>
+          <control type="toggle" />
+        </setting>
+        <setting id="activities.show" type="action" label="14114" help="36423">
+          <level>1</level>
+          <dependencies>
+            <dependency type="enable" setting="activities.enabled" operator="is">true</dependency>
+          </dependencies>
+          <control type="button" format="action">
+            <hidevalue>true</hidevalue>
+          </control>
+        </setting>
+      </group>
+    </category>
     <category id="debug" label="14092" help="36391">
       <group id="1">
         <setting id="debug.showloginfo" type="boolean" label="20191" help="36392">

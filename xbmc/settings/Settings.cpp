@@ -25,6 +25,7 @@
 #include "Autorun.h"
 #include "LangInfo.h"
 #include "Util.h"
+#include "activity/ActivityLog.h"
 #include "addons/Skin.h"
 #include "cores/AudioEngine/AEFactory.h"
 #include "cores/dvdplayer/DVDCodecs/Video/DVDVideoCodec.h"
@@ -262,6 +263,7 @@ void CSettings::Uninitialize()
   m_settingsManager->UnregisterSettingOptionsFiller("keyboardlayouts");
 
   // unregister ISettingCallback implementations
+  m_settingsManager->UnregisterCallback(&CActivityLog::GetInstance());
   m_settingsManager->UnregisterCallback(&g_advancedSettings);
   m_settingsManager->UnregisterCallback(&CMediaSettings::Get());
   m_settingsManager->UnregisterCallback(&CDisplaySettings::Get());
@@ -665,6 +667,10 @@ void CSettings::InitializeISettingCallbacks()
 {
   // register any ISettingCallback implementations
   std::set<std::string> settingSet;
+  settingSet.insert("activities.show");
+  m_settingsManager->RegisterCallback(&CActivityLog::GetInstance(), settingSet);
+
+  settingSet.clear();
   settingSet.insert("debug.showloginfo");
   settingSet.insert("debug.extralogging");
   settingSet.insert("debug.setextraloglevel");

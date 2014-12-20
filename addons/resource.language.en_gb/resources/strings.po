@@ -6975,7 +6975,27 @@ msgctxt "#14110"
 msgid "Long date format"
 msgstr ""
 
-#empty strings from id 14111 to 15011
+#: system/settings/settings.xml
+msgctxt "#14111"
+msgid "Activities"
+msgstr ""
+
+#: system/settings/settings.xml
+msgctxt "#14112"
+msgid "Enable activity logging"
+msgstr ""
+
+#: system/settings/settings.xml
+msgctxt "#14113"
+msgid "Enable notification activity logging"
+msgstr ""
+
+#: system/settings/settings.xml
+msgctxt "#14114"
+msgid "Show activity log"
+msgstr ""
+
+#empty strings from id 14115 to 15011
 
 #: xbmc/video/VideoDatabase.cpp
 msgctxt "#15012"
@@ -15764,7 +15784,11 @@ msgctxt "#36419"
 msgid "Define locations used for retrieving weather information."
 msgstr ""
 
-#empty string with id 36420
+#. Description of settings category "System -> Activities" with label #14105
+#: system/settings/settings.xml
+msgctxt "#36420"
+msgid "Category containing settings for activity logging."
+msgstr ""
 
 #. Description of setting "Videos -> Playback -> Prefer VDPAU Video Mixer" with label #13437
 #: system/settings/settings.xml
@@ -15778,7 +15802,11 @@ msgctxt "#36422"
 msgid "Enable hardware video decode using AMLogic decoder."
 msgstr ""
 
-#empty string with id 36423
+#. Description of settings "System -> Activities -> Show activity log" with label #14111
+#: system/settings/settings.xml
+msgctxt "#36423"
+msgid "Shows a list of all activities that took place during the current session."
+msgstr ""
 
 #: system/settings/settings.xml
 msgctxt "#36424"
@@ -15847,7 +15875,19 @@ msgctxt "#36435"
 msgid "Use DVDPlayer for decoding of video files with MMAL acceleration."
 msgstr ""
 
-#empty strings from id 36436 to 36499
+#. Description of settings "System -> Activities -> Enable activity logging" with label #14112
+#: system/settings/settings.xml
+msgctxt "#36436"
+msgid "Activity logging allows to keep track of what has happened."
+msgstr ""
+
+#. Description of settings "System -> Activities -> Enable notification activity logging" with label #14113
+#: system/settings/settings.xml
+msgctxt "#36437"
+msgid "Notification activity describe regular processes and actions performed by the system or the user."
+msgstr ""
+
+#empty strings from id 36438 to 36499
 #end reservation
 
 #. label of a setting for the stereoscopic 3D mode of the GUI that is/should be applied
