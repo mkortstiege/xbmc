@@ -126,17 +126,63 @@ bool CAddonsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
   {
     reposAsFolders = false;
     AddonPtr addon;
-    CAddonMgr::Get().GetAddon(path.GetHostName(),addon);
-    if (!addon)
-      return false;
+    CAddonMgr::Get().GetAddon(path.GetHostName(), addon, ADDON_UNKNOWN, false);
 
-    // ensure our repos are up to date
-    CAddonInstaller::Get().UpdateRepos(false, true);
-    CAddonDatabase database;
-    database.Open();
-    database.GetRepository(addon->ID(),addons);
-    items.SetProperty("reponame",addon->Name());
-    items.SetLabel(addon->Name());
+    // check if the addon is a repository
+    if (addon != NULL && addon->Type() == ADDON_REPOSITORY)
+    {
+      // ensure our repos are up to date
+      CAddonInstaller::Get().UpdateRepos(false, true);
+      CAddonDatabase database;
+      if (!database.Open())
+        return false;
+
+      database.GetRepository(addon->ID(), addons);
+      items.SetProperty("reponame", addon->Name());
+      items.SetLabel(addon->Name());
+    }
+    else
+    {
+      bool installed = addon != NULL;
+
+      // the addon doesn't seem to be installed
+      if (!installed)
+      {
+        CAddonDatabase database;
+        if (!database.Open())
+          return false;
+
+        // try to get the addon from the repository
+        if (!database.GetAddon(path.GetHostName(), addon) || addon == NULL)
+          return false;
+
+        std::string repository;
+        if (!database.GetRepoForAddon(addon->ID(), repository) || repository.empty())
+          return false;
+
+        path.SetHostName(repository);
+        path.SetFileName(TranslateType(addon->FullType(), false));
+      }
+      else
+      {
+        // reset the path
+        path.SetHostName("");
+        path.SetFileName("");
+
+        // find the proper path for the addon
+        if (CAddonMgr::Get().IsAddonDisabled(addon->ID()))
+          path.SetHostName("disabled");
+        else
+        {
+          path.SetHostName("enabled");
+          path.SetFileName(TranslateType(addon->FullType(), false));
+        }
+      }
+
+      // put together the path to the addon
+      std::string addonPath = URIUtils::AddFileToFolder(path.Get(), addon->ID());
+      return GetDirectory(CURL(addonPath), items);
+    }
   }
 
   if (path.GetFileName().empty())
@@ -164,9 +210,15 @@ bool CAddonsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
       return true;
     }
   }
-  else
+  else if (path.GetHostName() != "disabled")
   {
-    TYPE type = TranslateType(path.GetFileName());
+    // retrieve the addon type from the filename of the URL
+    std::string addonType = URIUtils::GetDirectory(path.GetFileName());
+    URIUtils::RemoveSlashAtEnd(addonType);
+    if (addonType.empty())
+      addonType = path.GetFileName();
+
+    TYPE type = TranslateType(addonType);
     items.SetProperty("addoncategory",TranslateType(type, true));
     items.SetLabel(TranslateType(type, true));
     items.SetPath(strPath);
