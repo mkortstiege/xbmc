@@ -20,6 +20,8 @@
 
 #include "AlarmClock.h"
 #include "ApplicationMessenger.h"
+#include "activity/ActivityLog.h"
+#include "activity/NotificationActivity.h"
 #include "guilib/LocalizeStrings.h"
 #include "threads/SingleLock.h"
 #include "log.h"
@@ -53,25 +55,25 @@ void CAlarmClock::Start(const std::string& strName, float n_secs, const std::str
     m_bIsRunning = true;
   }
 
-  std::string strAlarmClock;
-  std::string strStarted;
+  uint32_t labelAlarmClock;
+  uint32_t labelStarted;
   if (StringUtils::EqualsNoCase(strName, "shutdowntimer"))
   {
-    strAlarmClock = g_localizeStrings.Get(20144);
-    strStarted = g_localizeStrings.Get(20146);
+    labelAlarmClock = 20144;
+    labelStarted = 20146;
   }
   else
   {
-    strAlarmClock = g_localizeStrings.Get(13208);
-    strStarted = g_localizeStrings.Get(13210);
+    labelAlarmClock = 13208;
+    labelStarted = 13210;
   }
 
-  std::string strMessage = StringUtils::Format(strStarted.c_str(),
-                                              static_cast<int>(event.m_fSecs)/60,
-                                              static_cast<int>(event.m_fSecs)%60);
-
-  if(!bSilent)
-     CGUIDialogKaiToast::QueueNotification(CGUIDialogKaiToast::Info, strAlarmClock, strMessage);
+  ActivityPtr alarmClockActivity(new CNotificationActivity(labelAlarmClock,
+    StringUtils::Format(g_localizeStrings.Get(labelStarted).c_str(), static_cast<int>(event.m_fSecs) / 60, static_cast<int>(event.m_fSecs) % 60)));
+  if (bSilent)
+    CActivityLog::GetInstance().Add(alarmClockActivity);
+  else
+    CActivityLog::GetInstance().AddWithNotification(alarmClockActivity);
 
   event.watch.StartZero();
   CSingleLock lock(m_events);
@@ -90,11 +92,11 @@ void CAlarmClock::Stop(const std::string& strName, bool bSilent /* false */)
   if (iter == m_event.end())
     return;
 
-  std::string strAlarmClock;
+  uint32_t labelAlarmClock;
   if (StringUtils::EqualsNoCase(strName, "shutdowntimer"))
-    strAlarmClock = g_localizeStrings.Get(20144);
+    labelAlarmClock = 20144;
   else
-    strAlarmClock = g_localizeStrings.Get(13208);
+    labelAlarmClock = 13208;
 
   std::string strMessage;
   float       elapsed     = 0.f;
@@ -102,20 +104,21 @@ void CAlarmClock::Stop(const std::string& strName, bool bSilent /* false */)
   if (iter->second.watch.IsRunning())
     elapsed = iter->second.watch.GetElapsedSeconds();
 
-  if( elapsed > iter->second.m_fSecs )
+  if (elapsed > iter->second.m_fSecs)
     strMessage = g_localizeStrings.Get(13211);
   else
   {
-    float remaining = static_cast<float>(iter->second.m_fSecs-elapsed);
-    std::string strStarted = g_localizeStrings.Get(13212);
-    strMessage = StringUtils::Format(strStarted.c_str(),
-                                     static_cast<int>(remaining)/60,
-                                     static_cast<int>(remaining)%60);
+    float remaining = static_cast<float>(iter->second.m_fSecs - elapsed);
+    strMessage = StringUtils::Format(g_localizeStrings.Get(13212).c_str(), static_cast<int>(remaining) / 60, static_cast<int>(remaining) % 60);
   }
+
   if (iter->second.m_strCommand.empty() || iter->second.m_fSecs > elapsed)
   {
-    if(!bSilent)
-      CGUIDialogKaiToast::QueueNotification(CGUIDialogKaiToast::Info, strAlarmClock, strMessage);
+    ActivityPtr alarmClockActivity(new CNotificationActivity(labelAlarmClock, strMessage));
+    if (bSilent)
+      CActivityLog::GetInstance().Add(alarmClockActivity);
+    else
+      CActivityLog::GetInstance().AddWithNotification(alarmClockActivity);
   }
   else
   {
