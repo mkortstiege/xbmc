@@ -12484,7 +12484,7 @@ msgstr ""
 
 #: xbmc/addons/AddonInstaller.cpp
 msgctxt "#24045"
-msgid "Add-on does not have the correct structure"
+msgid "Failed to install addon from zip file"
 msgstr ""
 
 #: xbmc/addons/GUIDialogAddonInfo.cpp
@@ -12582,6 +12582,7 @@ msgid "Auto update"
 msgstr ""
 
 #: xbmc/addons/AddonInstaller.cpp
+#: xbmc/addons/AddonManager.cpp
 msgctxt "#24064"
 msgid "Add-on enabled"
 msgstr ""
@@ -12720,7 +12721,16 @@ msgctxt "#24091"
 msgid "This Add-on cannot be disabled"
 msgstr ""
 
-#empty strings from id 24092 to 24093
+#. Installing the addon from zip file located at <path to zip file> failed due to an invalid structure.
+#: xbmc/addons/AddonInstaller.cpp
+msgctxt "#24092"
+msgid "Installing the addon from zip file located at %s failed due to an invalid structure."
+msgstr ""
+
+#: xbmc/addons/AddonInstaller.cpp
+msgctxt "#24093"
+msgid "Add-on uninstalled"
+msgstr ""
 
 #: xbmc/addons/guidialogaddoninfo.cpp
 msgctxt "#24094"
@@ -12936,7 +12946,20 @@ msgctxt "#24134"
 msgid "We were unable to load your configured language. Please check your language settings."
 msgstr ""
 
-#empty strings from id 24135 to 24998
+#: xbmc/addons/AddonManager.cpp
+msgctxt "#24135"
+msgid "Add-on disabled"
+msgstr ""
+
+#empty strings from id 24136 to 24038
+
+#. The dependency on <addon id> version <addon version> coult not be satisfied.
+#: xbmc/addons/AddonInstaller.cpp
+msgctxt "#24139"
+msgid "The dependency on %s version %s could not be satisfied."
+msgstr ""
+
+#empty strings from id 24140 to 24998
 
 msgctxt "#24999"
 msgid "Hide incompatible"
