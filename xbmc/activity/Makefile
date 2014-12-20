@@ -1,4 +1,8 @@
 SRCS=ActivityLog.cpp \
+     AddonActivity.cpp \
+     AddonManagementActivity.cpp \
+     BaseActivity.cpp \
+     MediaLibraryActivity.cpp \
 
 LIB=activity.a
 

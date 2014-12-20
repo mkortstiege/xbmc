@@ -12689,7 +12689,15 @@ msgctxt "#24086"
 msgid "Installing add-on..."
 msgstr ""
 
-#empty strings from id 24087 to 24088
+#: xbmc/activity/AddonManagementActivity.cpp
+msgctxt "#24087"
+msgid "View Add-on"
+msgstr ""
+
+#: xbmc/activity/MediaLibraryActivity.cpp
+msgctxt "#24088"
+msgid "View"
+msgstr ""
 
 msgctxt "#24089"
 msgid "Add-on restarts"
