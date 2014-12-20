@@ -164,6 +164,14 @@ bool CGUIWindowAddonBrowser::OnMessage(CGUIMessage& message)
   return CGUIMediaWindow::OnMessage(message);
 }
 
+void CGUIWindowAddonBrowser::OnInitWindow()
+{
+  CGUIMediaWindow::OnInitWindow();
+
+  // check if the path contains an addon ID of an addon that we should select
+  TrySelectAddonByPath();
+}
+
 void CGUIWindowAddonBrowser::GetContextButtons(int itemNumber, CContextButtons& buttons)
 {
   if (itemNumber < 0 || itemNumber >= m_vecItems->Size())
@@ -419,6 +427,9 @@ bool CGUIWindowAddonBrowser::Update(const std::string &strDirectory, bool update
 
   m_thumbLoader.Load(*m_vecItems);
 
+  // check if the path contains an addon ID of an addon that we should select
+  TrySelectAddonByPath();
+
   return true;
 }
 
@@ -647,4 +658,24 @@ std::string CGUIWindowAddonBrowser::GetStartFolder(const std::string &dir)
   if (URIUtils::PathStarts(dir, "addons://"))
     return dir;
   return CGUIMediaWindow::GetStartFolder(dir);
+}
+
+void CGUIWindowAddonBrowser::TrySelectAddonByPath()
+{
+  // check if the path contains an addon ID of an addon that we should select
+  CURL path(m_vecItems->GetPath());
+  if (!path.GetFileNameWithoutPath().empty())
+  {
+    std::string addonId = path.GetFileNameWithoutPath();
+    for (int i = 0; i < m_vecItems->Size(); ++i)
+    {
+      CFileItemPtr addon = m_vecItems->Get(i);
+      if (addon->GetProperty("Addon.ID").asString() == addonId)
+      {
+        m_viewControl.SetSelectedItem(i);
+        m_iSelectedItem = m_viewControl.GetSelectedItem();
+        return;
+      }
+    }
+  }
 }

@@ -66,6 +66,7 @@ protected:
    */
   void SetItemLabel2(CFileItemPtr item);
 
+  virtual void OnInitWindow();
   virtual void GetContextButtons(int itemNumber, CContextButtons &buttons);
   virtual bool OnContextButton(int itemNumber, CONTEXT_BUTTON button);
   virtual bool OnClick(int iItem);
@@ -73,7 +74,10 @@ protected:
   virtual bool GetDirectory(const std::string &strDirectory, CFileItemList &items);
   virtual bool Update(const std::string &strDirectory, bool updateFilterPath = true);
   virtual std::string GetStartFolder(const std::string &dir);
+
 private:
+  void TrySelectAddonByPath();
+
   CProgramThumbLoader m_thumbLoader;
 };
 
