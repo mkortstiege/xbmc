@@ -347,7 +347,7 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
   else
   {
     result = CGUIMediaWindow::GetDirectory(strDirectory,items);
-    if (CSettings::Get().GetBool("general.addonforeignfilter"))
+    if (result && CSettings::Get().GetBool("general.addonforeignfilter"))
     {
       int i=0;
       while (i < items.Size())
@@ -362,7 +362,7 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
           items.Remove(i);
       }
     }
-    if (CSettings::Get().GetBool("general.addonbrokenfilter"))
+    if (result && CSettings::Get().GetBool("general.addonbrokenfilter"))
     {
       for (int i = items.Size() - 1; i >= 0; i--)
       {
