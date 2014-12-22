@@ -12951,7 +12951,22 @@ msgctxt "#24135"
 msgid "Add-on disabled"
 msgstr ""
 
-#empty strings from id 24136 to 24038
+#: xbmc/video/VideoInfoScanner.cpp
+msgctxt "#24136"
+msgid "Video library scanner"
+msgstr ""
+
+#: xbmc/music/infoscanner/MusicInfoScanner.cpp
+msgctxt "#24137"
+msgid "Music library scanner"
+msgstr ""
+
+#. Failed to scan <media type>: <filename>
+#: xbmc/music/infoscanner/MusicInfoScanner.cpp
+#: xbmc/video/VideoInfoScanner.cpp
+msgctxt "#24138"
+msgid "Failed to scan %s: %s"
+msgstr ""
 
 #. The dependency on <addon id> version <addon version> coult not be satisfied.
 #: xbmc/addons/AddonInstaller.cpp

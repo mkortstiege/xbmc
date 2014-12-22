@@ -21,6 +21,8 @@
 #include "threads/SystemClock.h"
 #include "FileItem.h"
 #include "VideoInfoScanner.h"
+#include "activity/ActivityLog.h"
+#include "activity/MediaLibraryActivity.h"
 #include "addons/AddonManager.h"
 #include "filesystem/DirectoryCache.h"
 #include "Util.h"
@@ -467,6 +469,16 @@ namespace VIDEO
       else if (ret == INFO_NOT_FOUND)
       {
         CLog::Log(LOGWARNING, "No information found for item '%s', it won't be added to the library.", CURL::GetRedacted(pItem->GetPath()).c_str());
+
+        MediaType mediaType = MediaTypeMovie;
+        if (info2->Content() == CONTENT_TVSHOWS)
+          mediaType = MediaTypeTvShow;
+        else if (info2->Content() == CONTENT_MUSICVIDEOS)
+          mediaType = MediaTypeMusicVideo;
+        CActivityLog::GetInstance().Add(ActivityPtr(new CMediaLibraryActivity(
+          mediaType, pItem->GetPath(), 24136,
+          StringUtils::Format(g_localizeStrings.Get(24138).c_str(), mediaType.c_str(), URIUtils::GetFileName(pItem->GetPath()).c_str()),
+          pItem->GetArt("thumb"), CURL::GetRedacted(pItem->GetPath()), ActivityLevelWarning)));
       }
 
       pURL = NULL;
