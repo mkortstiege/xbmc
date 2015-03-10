@@ -3088,6 +3088,9 @@
     </ClCompile>
     <ClCompile Include="..\..\xbmc\input\KeyboardLayoutManager.cpp">
       <Filter>input</Filter>
+	</ClCompile>
+    <ClCompile Include="..\..\xbmc\video\VideoDimensions.cpp">
+      <Filter>video</Filter>
     </ClCompile>
     <ClCompile Include="..\..\xbmc\music\CueInfoLoader.cpp">
       <Filter>music</Filter>
@@ -5981,6 +5984,9 @@
     </ClInclude>
     <ClInclude Include="..\..\xbmc\input\KeyboardLayoutManager.h">
       <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\video\VideoDimensions.h">
+      <Filter>video</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
