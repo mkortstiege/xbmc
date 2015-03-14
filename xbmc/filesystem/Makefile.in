@@ -1,6 +1,7 @@
 CXXFLAGS += -D__STDC_FORMAT_MACROS
 
-SRCS  = AddonsDirectory.cpp
+SRCS  = ActivitiesDirectory.cpp
+SRCS += AddonsDirectory.cpp
 SRCS += ASAPFileDirectory.cpp
 SRCS += CacheStrategy.cpp
 SRCS += CircularCache.cpp
