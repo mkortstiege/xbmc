@@ -27,17 +27,23 @@
 #include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 
-#define XML_VIEWSTATESETTINGS "viewstates"
-#define XML_VIEWMODE          "viewmode"
-#define XML_SORTMETHOD        "sortmethod"
-#define XML_SORTORDER         "sortorder"
-#define XML_SORTATTRIBUTES    "sortattributes"
-#define XML_GENERAL           "general"
-#define XML_SETTINGLEVEL      "settinglevel"
+#define XML_VIEWSTATESETTINGS       "viewstates"
+#define XML_VIEWMODE                "viewmode"
+#define XML_SORTMETHOD              "sortmethod"
+#define XML_SORTORDER               "sortorder"
+#define XML_SORTATTRIBUTES          "sortattributes"
+#define XML_GENERAL                 "general"
+#define XML_SETTINGLEVEL            "settinglevel"
+#define XML_ACTIVITY                "activity"
+#define XML_ACTIVITY_LEVEL          "level"
+#define XML_ACTIVITY_LEVEL_HIGHER   "showhigherlevels"
 
 using namespace std;
 
 CViewStateSettings::CViewStateSettings()
+  : m_settingLevel(SettingLevelStandard),
+    m_activityLevel(ActivityLevelBasic),
+    m_activityShowHigherLevels(true)
 {
   AddViewState("musicnavartists");
   AddViewState("musicnavalbums");
@@ -123,6 +129,19 @@ bool CViewStateSettings::Load(const TiXmlNode *settings)
       m_settingLevel = (SettingLevel)settingLevel;
     else
       m_settingLevel = SettingLevelStandard;
+
+    const TiXmlNode* pActivityNode = pElement->FirstChild(XML_ACTIVITY);
+    if (pActivityNode != NULL)
+    {
+      int activityLevel;
+      if (XMLUtils::GetInt(pActivityNode, XML_ACTIVITY_LEVEL, activityLevel, (const int)ActivityLevelBasic, (const int)ActivityLevelError))
+        m_activityLevel = (ActivityLevel)activityLevel;
+      else
+        m_activityLevel = ActivityLevelBasic;
+
+      if (!XMLUtils::GetBoolean(pActivityNode, XML_ACTIVITY_LEVEL_HIGHER, m_activityShowHigherLevels))
+        m_activityShowHigherLevels = true;
+    }
   }
 
   return true;
@@ -166,6 +185,18 @@ bool CViewStateSettings::Save(TiXmlNode *settings) const
   }
 
   XMLUtils::SetInt(generalNode, XML_SETTINGLEVEL, (int)m_settingLevel);
+
+  TiXmlNode *activityNode = generalNode->FirstChild(XML_ACTIVITY);
+  if (activityNode == NULL)
+  {
+    TiXmlElement activityElement(XML_ACTIVITY);
+    activityNode = generalNode->InsertEndChild(activityElement);
+    if (activityNode == NULL)
+      return false;
+  }
+
+  XMLUtils::SetInt(activityNode, XML_ACTIVITY_LEVEL, (int)m_activityLevel);
+  XMLUtils::SetBoolean(activityNode, XML_ACTIVITY_LEVEL_HIGHER, (int)m_activityShowHigherLevels);
 
   return true;
 }
@@ -215,6 +246,29 @@ SettingLevel CViewStateSettings::GetNextSettingLevel() const
   SettingLevel level = (SettingLevel)((int)m_settingLevel + 1);
   if (level > SettingLevelExpert)
     level = SettingLevelBasic;
+  return level;
+}
+
+void CViewStateSettings::SetActivityLevel(ActivityLevel activityLevel)
+{
+  if (activityLevel < ActivityLevelBasic)
+    m_activityLevel = ActivityLevelBasic;
+  if (activityLevel > ActivityLevelError)
+    m_activityLevel = ActivityLevelError;
+  else
+    m_activityLevel = activityLevel;
+}
+
+void CViewStateSettings::CycleActivityLevel()
+{
+  m_activityLevel = GetNextActivityLevel();
+}
+
+ActivityLevel CViewStateSettings::GetNextActivityLevel() const
+{
+  ActivityLevel level = (ActivityLevel)((int)m_activityLevel + 1);
+  if (level > ActivityLevelError)
+    level = ActivityLevelBasic;
   return level;
 }
 

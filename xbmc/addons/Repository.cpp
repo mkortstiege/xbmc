@@ -19,6 +19,8 @@
  */
 
 #include "Repository.h"
+#include "activity/ActivityLog.h"
+#include "activity/AddonManagementActivity.h"
 #include "addons/AddonDatabase.h"
 #include "addons/AddonInstaller.h"
 #include "addons/AddonManager.h"
@@ -259,9 +261,13 @@ bool CRepositoryUpdateJob::DoWork()
       break;
 
     AddonPtr newAddon = i->second;
+    bool markedAsBroken = false;
     bool deps_met = CAddonInstaller::Get().CheckDependencies(newAddon, &database);
     if (!deps_met && newAddon->Props().broken.empty())
+    {
       newAddon->Props().broken = "DEPSNOTMET";
+      markedAsBroken = true;
+    }
 
     // invalidate the art associated with this item
     if (!newAddon->Props().fanart.empty())
@@ -309,6 +315,9 @@ bool CRepositoryUpdateJob::DoWork()
         }
       }
       database.BreakAddon(newAddon->ID(), newAddon->Props().broken);
+
+      if (markedAsBroken)
+        CActivityLog::GetInstance().Add(ActivityPtr(new CAddonManagementActivity(newAddon, 24096)));
     }
   }
   database.CommitMultipleExecute();

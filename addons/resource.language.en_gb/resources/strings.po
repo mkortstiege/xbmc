@@ -68,7 +68,6 @@ msgid "Kodi media center"
 msgstr ""
 
 #empty string with id 10
-#strings from 11 to 17 are reserved for weather translation
 
 #. Weather token
 msgctxt "#11"
@@ -236,7 +235,6 @@ msgid "Dec"
 msgstr ""
 
 #empty strings from id 63 to 70
-#strings from 71 to 97 are reserved for weather translation
 
 #. Weather token
 msgctxt "#71"
@@ -725,7 +723,17 @@ msgctxt "#176"
 msgid "Styles"
 msgstr ""
 
-#empty strings from id 177 to 178
+#. <application name> successfully started
+#: xbmc/Application.cpp
+msgctxt "#177"
+msgid "%s successfully started"
+msgstr ""
+
+#. <application name> has been successfully started.
+#: xbmc/Application.cpp
+msgctxt "#178"
+msgid "%s has been successfully started."
+msgstr ""
 
 #: xbmc/media/MediaTypes.cpp
 #: xbmc/music/karaoke/GUIDialogKaraokeSongSelector.cpp
@@ -3670,6 +3678,7 @@ msgstr ""
 
 #empty string with id 1209
 
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
 msgctxt "#1210"
 msgid "Remove"
 msgstr ""
@@ -6975,7 +6984,57 @@ msgctxt "#14110"
 msgid "Long date format"
 msgstr ""
 
-#empty strings from id 14111 to 15011
+#: system/settings/settings.xml
+msgctxt "#14111"
+msgid "Activities"
+msgstr ""
+
+#: system/settings/settings.xml
+msgctxt "#14112"
+msgid "Enable activity logging"
+msgstr ""
+
+#: system/settings/settings.xml
+msgctxt "#14113"
+msgid "Enable notification activity logging"
+msgstr ""
+
+#: system/settings/settings.xml
+msgctxt "#14114"
+msgid "Show activity log"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14115"
+msgid "Basic"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14116"
+msgid "Information"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14117"
+msgid "Warning"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14118"
+msgid "Error"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14119"
+msgid "Level: %s"
+msgstr ""
+
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
+msgctxt "#14120"
+msgid "Show higher levels"
+msgstr ""
+
+#empty strings from id 14115 to 15011
 
 #: xbmc/video/VideoDatabase.cpp
 msgctxt "#15012"
@@ -7763,6 +7822,7 @@ msgctxt "#19032"
 msgid "Timeline"
 msgstr ""
 
+#: xbmc/activity/windows/GUIWindowActivityLog.cpp
 msgctxt "#19033"
 msgid "Information"
 msgstr ""
@@ -12456,7 +12516,7 @@ msgstr ""
 
 #: xbmc/addons/AddonInstaller.cpp
 msgctxt "#24045"
-msgid "Add-on does not have the correct structure"
+msgid "Failed to install addon from zip file"
 msgstr ""
 
 #: xbmc/addons/GUIDialogAddonInfo.cpp
@@ -12554,6 +12614,7 @@ msgid "Auto update"
 msgstr ""
 
 #: xbmc/addons/AddonInstaller.cpp
+#: xbmc/addons/AddonManager.cpp
 msgctxt "#24064"
 msgid "Add-on enabled"
 msgstr ""
@@ -12669,7 +12730,15 @@ msgctxt "#24086"
 msgid "Installing add-on..."
 msgstr ""
 
-#empty strings from id 24087 to 24088
+#: xbmc/activity/AddonManagementActivity.cpp
+msgctxt "#24087"
+msgid "View Add-on"
+msgstr ""
+
+#: xbmc/activity/MediaLibraryActivity.cpp
+msgctxt "#24088"
+msgid "View"
+msgstr ""
 
 msgctxt "#24089"
 msgid "Add-on restarts"
@@ -12684,7 +12753,16 @@ msgctxt "#24091"
 msgid "This Add-on cannot be disabled"
 msgstr ""
 
-#empty strings from id 24092 to 24093
+#. Installing the addon from zip file located at <path to zip file> failed due to an invalid structure.
+#: xbmc/addons/AddonInstaller.cpp
+msgctxt "#24092"
+msgid "Installing the addon from zip file located at %s failed due to an invalid structure."
+msgstr ""
+
+#: xbmc/addons/AddonInstaller.cpp
+msgctxt "#24093"
+msgid "Add-on uninstalled"
+msgstr ""
 
 #: xbmc/addons/guidialogaddoninfo.cpp
 msgctxt "#24094"
@@ -12900,7 +12978,35 @@ msgctxt "#24134"
 msgid "We were unable to load your configured language. Please check your language settings."
 msgstr ""
 
-#empty strings from id 24135 to 24998
+#: xbmc/addons/AddonManager.cpp
+msgctxt "#24135"
+msgid "Add-on disabled"
+msgstr ""
+
+#: xbmc/video/VideoInfoScanner.cpp
+msgctxt "#24136"
+msgid "Video library scanner"
+msgstr ""
+
+#: xbmc/music/infoscanner/MusicInfoScanner.cpp
+msgctxt "#24137"
+msgid "Music library scanner"
+msgstr ""
+
+#. Failed to scan <media type>: <filename>
+#: xbmc/music/infoscanner/MusicInfoScanner.cpp
+#: xbmc/video/VideoInfoScanner.cpp
+msgctxt "#24138"
+msgid "Failed to scan %s: %s"
+msgstr ""
+
+#. The dependency on <addon id> version <addon version> coult not be satisfied.
+#: xbmc/addons/AddonInstaller.cpp
+msgctxt "#24139"
+msgid "The dependency on %s version %s could not be satisfied."
+msgstr ""
+
+#empty strings from id 24140 to 24998
 
 msgctxt "#24999"
 msgid "Hide incompatible"
@@ -15764,7 +15870,11 @@ msgctxt "#36419"
 msgid "Define locations used for retrieving weather information."
 msgstr ""
 
-#empty string with id 36420
+#. Description of settings category "System -> Activities" with label #14105
+#: system/settings/settings.xml
+msgctxt "#36420"
+msgid "Category containing settings for activity logging."
+msgstr ""
 
 #. Description of setting "Videos -> Playback -> Prefer VDPAU Video Mixer" with label #13437
 #: system/settings/settings.xml
@@ -15778,7 +15888,11 @@ msgctxt "#36422"
 msgid "Enable hardware video decode using AMLogic decoder."
 msgstr ""
 
-#empty string with id 36423
+#. Description of settings "System -> Activities -> Show activity log" with label #14111
+#: system/settings/settings.xml
+msgctxt "#36423"
+msgid "Shows a list of all activities that took place during the current session."
+msgstr ""
 
 #: system/settings/settings.xml
 msgctxt "#36424"
@@ -15847,7 +15961,19 @@ msgctxt "#36435"
 msgid "Use DVDPlayer for decoding of video files with MMAL acceleration."
 msgstr ""
 
-#empty strings from id 36436 to 36499
+#. Description of settings "System -> Activities -> Enable activity logging" with label #14112
+#: system/settings/settings.xml
+msgctxt "#36436"
+msgid "Activity logging allows to keep track of what has happened."
+msgstr ""
+
+#. Description of settings "System -> Activities -> Enable notification activity logging" with label #14113
+#: system/settings/settings.xml
+msgctxt "#36437"
+msgid "Notification activity describe regular processes and actions performed by the system or the user."
+msgstr ""
+
+#empty strings from id 36438 to 36499
 #end reservation
 
 #. label of a setting for the stereoscopic 3D mode of the GUI that is/should be applied

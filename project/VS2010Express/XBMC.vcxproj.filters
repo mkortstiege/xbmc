@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="win32">
@@ -333,6 +333,15 @@
     </Filter>
     <Filter Include="interfaces\legacy\wsgi">
       <UniqueIdentifier>{4750236a-887e-40c1-af3e-1e095f5960e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="activity">
+      <UniqueIdentifier>{2ee8cf54-8d15-49f8-ad0d-1b02a5bc92ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="activity\windows">
+      <UniqueIdentifier>{229d0ae7-142b-47ba-9466-697bf7d4a223}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="activity\dialogs">
+      <UniqueIdentifier>{949eafc6-2793-40f9-84c9-2023f247dcd9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3151,6 +3160,30 @@
     </ClCompile>
     <ClCompile Include="..\..\xbmc\music\CueInfoLoader.cpp">
       <Filter>music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\ActivityLog.cpp">
+      <Filter>activity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\windows\GUIWindowActivityLog.cpp">
+      <Filter>activity\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\AddonActivity.cpp">
+      <Filter>activity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\AddonManagementActivity.cpp">
+      <Filter>activity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\BaseActivity.cpp">
+      <Filter>activity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\MediaLibraryActivity.cpp">
+      <Filter>activity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\filesystem\ActivitiesDirectory.cpp">
+      <Filter>filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\activity\windows\GUIViewStateActivityLog.cpp">
+      <Filter>activity\windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -6119,6 +6152,39 @@
     </ClInclude>
     <ClInclude Include="..\..\xbmc\input\KeyboardLayoutManager.h">
       <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\IActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\NotificationActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\BaseActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\ActivityLog.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\windows\GUIWindowActivityLog.h">
+      <Filter>activity\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\UniqueActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\AddonActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\AddonManagementActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\MediaLibraryActivity.h">
+      <Filter>activity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\filesystem\ActivitiesDirectory.h">
+      <Filter>filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\activity\windows\GUIViewStateActivityLog.h">
+      <Filter>activity\windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

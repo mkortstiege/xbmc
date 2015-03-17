@@ -22,7 +22,9 @@
 #include "AudioEncoder.h"
 #include "AudioDecoder.h"
 #include "DllLibCPluff.h"
-#include "LanguageResource.h"
+#include "activity/ActivityLog.h"
+#include "activity/AddonManagementActivity.h"
+#include "addons/LanguageResource.h"
 #include "utils/StringUtils.h"
 #include "utils/JobManager.h"
 #include "threads/SingleLock.h"
@@ -634,9 +636,15 @@ void CAddonMgr::RemoveAddon(const std::string& ID)
 bool CAddonMgr::DisableAddon(const std::string& ID, bool disable)
 {
   CSingleLock lock(m_critSection);
-  if (m_database.DisableAddon(ID, disable))
+  bool isDisabled = IsAddonDisabled(ID);
+  if (isDisabled != disable && m_database.DisableAddon(ID, disable))
   {
     m_disabled[ID] = disable;
+
+    AddonPtr addon;
+    if (GetAddon(ID, addon, ADDON_UNKNOWN, false) && addon != NULL)
+      CActivityLog::GetInstance().Add(ActivityPtr(new CAddonManagementActivity(addon, disable ? 24135 : 24064)));
+
     return true;
   }
 

@@ -164,6 +164,14 @@ bool CGUIWindowAddonBrowser::OnMessage(CGUIMessage& message)
   return CGUIMediaWindow::OnMessage(message);
 }
 
+void CGUIWindowAddonBrowser::OnInitWindow()
+{
+  CGUIMediaWindow::OnInitWindow();
+
+  // check if the path contains an addon ID of an addon that we should select
+  TrySelectAddonByPath();
+}
+
 void CGUIWindowAddonBrowser::GetContextButtons(int itemNumber, CContextButtons& buttons)
 {
   if (itemNumber < 0 || itemNumber >= m_vecItems->Size())
@@ -306,8 +314,7 @@ void CGUIWindowAddonBrowser::UpdateButtons()
   CGUIMediaWindow::UpdateButtons();
 }
 
-static bool FilterVar(bool valid, const CVariant& variant,
-                                  const std::string& check)
+static bool FilterVar(bool valid, const CVariant& variant, const std::string& check)
 {
   if (!valid)
     return false;
@@ -319,8 +326,7 @@ static bool FilterVar(bool valid, const CVariant& variant,
   return regions.find(check) == std::string::npos;
 }
 
-bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
-                                          CFileItemList& items)
+bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory, CFileItemList& items)
 {
   bool result;
   if (URIUtils::PathEquals(strDirectory, "addons://downloading/"))
@@ -329,9 +335,9 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
     CAddonInstaller::Get().GetInstallList(addons);
 
     CURL url(strDirectory);
-    CAddonsDirectory::GenerateListing(url,addons,items);
+    CAddonsDirectory::GenerateListing(url, addons, items);
     result = true;
-    items.SetProperty("reponame",g_localizeStrings.Get(24067));
+    items.SetProperty("reponame", g_localizeStrings.Get(24067));
     items.SetPath(strDirectory);
 
     if (m_guiState.get() && !m_guiState->HideParentDirItems())
@@ -346,10 +352,10 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
   }
   else
   {
-    result = CGUIMediaWindow::GetDirectory(strDirectory,items);
-    if (CSettings::Get().GetBool("general.addonforeignfilter"))
+    result = CGUIMediaWindow::GetDirectory(strDirectory, items);
+    if (result && CSettings::Get().GetBool("general.addonforeignfilter"))
     {
-      int i=0;
+      int i = 0;
       while (i < items.Size())
       {
         if (!FilterVar(true, items[i]->GetProperty("Addon.Language"), "en") ||
@@ -362,12 +368,13 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
           items.Remove(i);
       }
     }
-    if (CSettings::Get().GetBool("general.addonbrokenfilter"))
+    if (result && CSettings::Get().GetBool("general.addonbrokenfilter"))
     {
       for (int i = items.Size() - 1; i >= 0; i--)
       {
         if (!items[i]->GetProperty("Addon.Broken").empty())
-        { //check if it's installed
+        {
+          //check if it's installed
           AddonPtr addon;
           if (!CAddonMgr::Get().GetAddon(items[i]->GetProperty("Addon.ID").asString(), addon))
             items.Remove(i);
@@ -378,7 +385,7 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
 
   if (strDirectory.empty() && CAddonInstaller::Get().IsDownloading())
   {
-    CFileItemPtr item(new CFileItem("addons://downloading/",true));
+    CFileItemPtr item(new CFileItem("addons://downloading/", true));
     item->SetLabel(g_localizeStrings.Get(24067));
     item->SetLabelPreformated(true);
     item->SetIconImage("DefaultNetwork.png");
@@ -387,7 +394,7 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory,
 
   items.SetContent("addons");
 
-  for (int i=0;i<items.Size();++i)
+  for (int i = 0; i < items.Size(); ++i)
     SetItemLabel2(items[i]);
 
   return result;
@@ -419,6 +426,9 @@ bool CGUIWindowAddonBrowser::Update(const std::string &strDirectory, bool update
     return false;
 
   m_thumbLoader.Load(*m_vecItems);
+
+  // check if the path contains an addon ID of an addon that we should select
+  TrySelectAddonByPath();
 
   return true;
 }
@@ -648,4 +658,24 @@ std::string CGUIWindowAddonBrowser::GetStartFolder(const std::string &dir)
   if (URIUtils::PathStarts(dir, "addons://"))
     return dir;
   return CGUIMediaWindow::GetStartFolder(dir);
+}
+
+void CGUIWindowAddonBrowser::TrySelectAddonByPath()
+{
+  // check if the path contains an addon ID of an addon that we should select
+  CURL path(m_vecItems->GetPath());
+  if (!path.GetFileNameWithoutPath().empty())
+  {
+    std::string addonId = path.GetFileNameWithoutPath();
+    for (int i = 0; i < m_vecItems->Size(); ++i)
+    {
+      CFileItemPtr addon = m_vecItems->Get(i);
+      if (addon->GetProperty("Addon.ID").asString() == addonId)
+      {
+        m_viewControl.SetSelectedItem(i);
+        m_iSelectedItem = m_viewControl.GetSelectedItem();
+        return;
+      }
+    }
+  }
 }
