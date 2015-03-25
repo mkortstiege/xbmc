@@ -18,19 +18,20 @@
  *
  */
 
-#include "threads/platform/win/Win32Exception.h"
-#include <shellapi.h>
-#include <dbghelp.h>
+#include "CompileInfo.h"
 #include "threads/Thread.h"
+#include "threads/platform/win/Win32Exception.h"
 #include "utils/CPUInfo.h"
 #include "xbmc.h"
-#include "CompileInfo.h"
+
+#include <dbghelp.h>
+#include <shellapi.h>
 
 
 extern "C" int main(int argc, char* argv[]);
 
 // Minidump creation function
-LONG WINAPI CreateMiniDump( EXCEPTION_POINTERS* pEp )
+LONG WINAPI CreateMiniDump(EXCEPTION_POINTERS* pEp)
 {
   win32_exception::write_stacktrace(pEp);
   win32_exception::write_minidump(pEp);
@@ -41,44 +42,44 @@ LONG WINAPI CreateMiniDump( EXCEPTION_POINTERS* pEp )
 // Name: WinMain()
 // Desc: The application's entry point
 //-----------------------------------------------------------------------------
-INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT )
+INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT)
 {
 
   // Initializes CreateMiniDump to handle exceptions.
   char ver[100];
   if (strlen(CCompileInfo::GetSuffix()) > 0)
-    sprintf_s(ver, "%d.%d-%s Git:%s", CCompileInfo::GetMajor(), 
-              CCompileInfo::GetMinor(), CCompileInfo::GetSuffix(), CCompileInfo::GetSCMID());
+    sprintf_s(ver, "%d.%d-%s Git:%s", CCompileInfo::GetMajor(),
+    CCompileInfo::GetMinor(), CCompileInfo::GetSuffix(), CCompileInfo::GetSCMID());
   else
-    sprintf_s(ver, "%d.%d Git:%s", CCompileInfo::GetMajor(), 
-              CCompileInfo::GetMinor(), CCompileInfo::GetSCMID());
+    sprintf_s(ver, "%d.%d Git:%s", CCompileInfo::GetMajor(),
+    CCompileInfo::GetMinor(), CCompileInfo::GetSCMID());
 
   win32_exception::set_version(std::string(ver));
-  SetUnhandledExceptionFilter( CreateMiniDump );
+  SetUnhandledExceptionFilter(CreateMiniDump);
 
   // check if Kodi is already running
   std::string appName = CCompileInfo::GetAppName();
-  CreateMutex(NULL, FALSE, (appName + " Media Center").c_str());
-  if(GetLastError() == ERROR_ALREADY_EXISTS)
+  CreateMutex(nullptr, FALSE, (appName + " Media Center").c_str());
+  if (GetLastError() == ERROR_ALREADY_EXISTS)
   {
     HWND hwnd = FindWindow(appName.c_str(), appName.c_str());
-    if(hwnd != NULL)
+    if (hwnd != NULL)
     {
       // switch to the running instance
-      ShowWindow(hwnd,SW_RESTORE);
+      ShowWindow(hwnd, SW_RESTORE);
       SetForegroundWindow(hwnd);
     }
     return 0;
   }
 
-  if((g_cpuInfo.GetCPUFeatures() & CPU_FEATURE_SSE2) == 0)
+  if ((g_cpuInfo.GetCPUFeatures() & CPU_FEATURE_SSE2) == 0)
   {
-    MessageBox(NULL, "No SSE2 support detected", (appName + ": Fatal Error").c_str(), MB_OK|MB_ICONERROR);
+    MessageBox(NULL, "No SSE2 support detected", (appName + ": Fatal Error").c_str(), MB_OK | MB_ICONERROR);
     return 0;
   }
 
   //Initialize COM
-  CoInitializeEx(NULL, COINIT_MULTITHREADED);
+  CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 
 
   int argc;
@@ -98,7 +99,7 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT )
 
   // Initialise Winsock
   WSADATA wd;
-  WSAStartup(MAKEWORD(2,2), &wd);
+  WSAStartup(MAKEWORD(2, 2), &wd);
 
   // use 1 ms timer precision - like SDL initialization used to do
   timeBeginPeriod(1);
@@ -114,10 +115,10 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT )
   for (int i = 0; i < argc; ++i)
     delete[] argv[i];
   delete[] argv;
-  
+
   // clear previously set timer resolution
-  timeEndPeriod(1);		
-    
+  timeEndPeriod(1);
+
   WSACleanup();
   CoUninitialize();
 

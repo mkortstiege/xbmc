@@ -30,24 +30,24 @@ public:
   *
   * \param[in] message  message to display
   */
-  void DisplayMessage(const std::string& message);
+  static void DisplayMessage(const std::string& message);
 
   /*! \brief Display a warning message to the user during startup
   *
   * \param[in] warning   warning to display
   */
-  void DisplayWarning(const std::string& warning);
+  static void DisplayWarning(const std::string& warning);
 
   /*! \brief Display an error message to the user during startup
   *
   * \param[in] error  error to display
   */
-  void DisplayError(const std::string& error);
+  static void DisplayError(const std::string& error);
 
   /*! \brief Display the help message with command line options available
   *
   * \param[in] help  List of commands and explanations,
                      help.push_back(std::make_pair("--help", "this displays the help))
   */
-  void DisplayHelpMessage(const std::vector<std::pair<std::string, std::string>>& help);
+  static void DisplayHelpMessage(const std::vector<std::pair<std::string, std::string>>& help);
 };

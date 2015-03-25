@@ -39,8 +39,6 @@ extern "C" int XBMC_Run(bool renderGUI)
 {
   int status = -1;
 
-  CMessagePrinter printer;
-
   if (!g_advancedSettings.Initialized())
   {
 #ifdef _DEBUG
@@ -55,7 +53,7 @@ extern "C" int XBMC_Run(bool renderGUI)
 
   if (!g_application.Create())
   {
-    printer.DisplayError("ERROR: Unable to create application. Exiting");
+    CMessagePrinter::DisplayError("ERROR: Unable to create application. Exiting");
     return status;
   }
 
@@ -67,12 +65,12 @@ extern "C" int XBMC_Run(bool renderGUI)
 
   if (renderGUI && !g_application.CreateGUI())
   {
-    printer.DisplayError("ERROR: Unable to create GUI. Exiting");
+    CMessagePrinter::DisplayError("ERROR: Unable to create GUI. Exiting");
     return status;
   }
   if (!g_application.Initialize())
   {
-    printer.DisplayError("ERROR: Unable to Initialize. Exiting");
+    CMessagePrinter::DisplayError("ERROR: Unable to Initialize. Exiting");
     return status;
   }
 
@@ -90,19 +88,19 @@ extern "C" int XBMC_Run(bool renderGUI)
 
   try
   {
-
     status = g_application.Run();
-
   }
+#ifdef TARGET_WINDOWS
   catch (const XbmcCommons::UncheckedException &e)
   {
     e.LogThrowMessage("CApplication::Create()");
-    printer.DisplayError("ERROR: Exception caught on main loop. Exiting");
+    CMessagePrinter::DisplayError("ERROR: Exception caught on main loop. Exiting");
     status = -1;
   }
+#endif
   catch(...)
   {
-    printer.DisplayError("ERROR: Exception caught on main loop. Exiting");
+    CMessagePrinter::DisplayError("ERROR: Exception caught on main loop. Exiting");
     status = -1;
   }
 

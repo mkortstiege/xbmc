@@ -42,7 +42,7 @@ void CMessagePrinter::DisplayHelpMessage(const std::vector<std::pair<std::string
 {
   //very crude implementation, pretty it up when possible
   std::string message;
-  for (auto& line : help)
+  for (const auto& line : help)
   {
     message.append(line.first + "\t" + line.second + "\r\n");
   }
