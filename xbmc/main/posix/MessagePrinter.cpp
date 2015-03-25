@@ -25,17 +25,17 @@
 
 void CMessagePrinter::DisplayMessage(const std::string& message)
 {
-  fprintf(stdout, message.c_str());
+  fprintf(stdout, "%s\n", message.c_str());
 }
 
 void CMessagePrinter::DisplayWarning(const std::string& warning)
 {
-  fprintf(stderr, warning.c_str())
+  fprintf(stderr, "%s\n", warning.c_str());
 }
 
 void CMessagePrinter::DisplayError(const std::string& error)
 {
-  fprintf(stderr, error.c_str());
+  fprintf(stderr,"%s\n", error.c_str());
 }
 
 void CMessagePrinter::DisplayHelpMessage(const std::vector<std::pair<std::string, std::string>>& help)
@@ -47,5 +47,5 @@ void CMessagePrinter::DisplayHelpMessage(const std::vector<std::pair<std::string
     message.append(line.first + "\t" + line.second + "\n");
   }
 
-  fprintf(stdout, message.c_str());
+  fprintf(stdout, "%s\n", message.c_str());
 }
