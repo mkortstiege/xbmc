@@ -1818,7 +1818,9 @@ void CUtil::ScanForExternalSubtitles(const std::string& strMovie, std::vector<st
   {
     CFileItemPtr pItem = items[i];
 
-    if (pItem->m_bIsFolder)
+    // skip folders and other unwanted items. This is needed for
+    // some vfs implementations that don't allow pre-filtering.
+    if (pItem->m_bIsFolder || !pItem->IsSubtitle())
       continue;
 
     std::string strCandidate = URIUtils::GetFileName(pItem->GetPath());
