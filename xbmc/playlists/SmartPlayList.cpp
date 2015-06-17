@@ -810,6 +810,8 @@ std::string CSmartPlaylistRule::FormatWhereClause(const std::string &negate, con
       query = "CASE WHEN COALESCE(" + GetField(FieldNumberOfEpisodes, strType) + " - " + GetField(FieldNumberOfWatchedEpisodes, strType) + ", 0) > 0 THEN 0 ELSE 1 END " + parameter;
     else if (m_field == FieldTag)
       query = negate + FormatLinkQuery("tag", "tag", MediaTypeTvShow, GetField(FieldId, strType), parameter);
+    else if (m_field == FieldPath)
+      query = negate + " EXISTS (SELECT 1 FROM tvshowlinkpath JOIN path ON path.idPath=tvshowlinkpath.idPath WHERE tvshowlinkpath.idShow=" + GetField(FieldId, strType) + " AND path.strPath " + parameter + ")";
   }
   else if (strType == "episodes")
   {
