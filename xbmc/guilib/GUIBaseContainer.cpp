@@ -1272,6 +1272,16 @@ void CGUIBaseContainer::GetCacheOffsets(int &cacheBefore, int &cacheAfter) const
   }
 }
 
+int CGUIBaseContainer::GetPagingOffset(bool movedown) const
+{
+  if (movedown)
+  {
+    int offset = GetOffset() + 2 * m_itemsPerPage;
+    return (offset > GetRows()) ? (m_itemsPerPage + GetRows() - offset) : m_itemsPerPage;
+  }
+  return (GetOffset() >= m_itemsPerPage) ? m_itemsPerPage : GetOffset();
+}
+
 void CGUIBaseContainer::SetCursor(int cursor)
 {
   m_cursor = cursor;

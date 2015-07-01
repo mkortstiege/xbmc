@@ -708,6 +708,7 @@ CScroller::CScroller(unsigned int duration /* = 200 */, std::shared_ptr<Tweener>
   m_startTime = 0;
   m_startPosition = 0;
   m_hasResumePoint = false;
+  m_paging = false;
   m_lastTime = 0;
   m_duration = duration > 0 ? duration : 1;
   m_pTweener = tweener;
@@ -731,6 +732,7 @@ CScroller& CScroller::operator=(const CScroller &right)
   m_lastTime = right.m_lastTime;
   m_duration = right.m_duration;
   m_pTweener = right.m_pTweener;
+  m_paging = right.m_paging;
   return *this;
 }
 

@@ -238,6 +238,9 @@ public:
    */
   bool Update(unsigned int time);
 
+  bool isPagingEnabled() const { return m_paging; };
+  void setPaging(bool paging) { m_paging = paging; };
+
   /**
    * Value of scroll
    */
@@ -256,6 +259,7 @@ private:
   float        m_delta;                   //!< Brief distance that we have to travel during scroll
   float        m_startPosition;           //!< Brief starting position of scroll
   bool         m_hasResumePoint;          //!< Brief check if we should tween from middle of the tween
+  bool         m_paging;
   unsigned int m_startTime;               //!< Brief starting time of scroll
   unsigned int m_lastTime;                //!< Brief last remember time (updated each time Scroll() method is called)
 
