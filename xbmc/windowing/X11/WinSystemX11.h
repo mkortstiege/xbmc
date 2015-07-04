@@ -89,6 +89,8 @@ public:
   void RecreateWindow();
   int GetCrtc() { return m_crtc; }
 
+  std::string GetClipboardText(void);
+
 protected:
   bool RefreshGlxContext(bool force);
   void OnLostDevice();
