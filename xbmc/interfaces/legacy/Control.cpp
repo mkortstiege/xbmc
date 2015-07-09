@@ -870,10 +870,10 @@ namespace XBMCAddon
         LOCKGUI;
         if (pGUIControl)
         {
-          pGUIControl->SetNavigationAction(ACTION_MOVE_UP,    up->iControlId);
-          pGUIControl->SetNavigationAction(ACTION_MOVE_DOWN,  down->iControlId);
-          pGUIControl->SetNavigationAction(ACTION_MOVE_LEFT,  left->iControlId);
-          pGUIControl->SetNavigationAction(ACTION_MOVE_RIGHT, right->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_UP,    up->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_DOWN,  down->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_LEFT,  left->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_RIGHT, right->iControlId);
         }
       }
     }
@@ -886,7 +886,7 @@ namespace XBMCAddon
       {
         LOCKGUI;
         if (pGUIControl)
-          pGUIControl->SetNavigationAction(ACTION_MOVE_UP, control->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_UP, control->iControlId);
       }
     }
 
@@ -898,7 +898,7 @@ namespace XBMCAddon
       {
         LOCKGUI;
         if (pGUIControl)
-          pGUIControl->SetNavigationAction(ACTION_MOVE_DOWN, control->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_DOWN, control->iControlId);
       }
     }
 
@@ -910,7 +910,7 @@ namespace XBMCAddon
       {
         LOCKGUI;
         if (pGUIControl)
-          pGUIControl->SetNavigationAction(ACTION_MOVE_LEFT, control->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_LEFT, control->iControlId);
       }
     }
 
@@ -922,7 +922,7 @@ namespace XBMCAddon
       {
         LOCKGUI;
         if (pGUIControl)
-          pGUIControl->SetNavigationAction(ACTION_MOVE_RIGHT, control->iControlId);
+          pGUIControl->SetAction(ACTION_MOVE_RIGHT, control->iControlId);
       }
     }
 
