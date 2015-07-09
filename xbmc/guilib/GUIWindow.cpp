@@ -429,6 +429,8 @@ bool CGUIWindow::OnAction(const CAction &action)
   // default implementations
   if (action.GetID() == ACTION_NAV_BACK || action.GetID() == ACTION_PREVIOUS_MENU)
     return OnBack(action.GetID());
+  else if (action.GetID() == ACTION_SHOW_INFO)
+    return OnInfo(action.GetID());
 
   return false;
 }
