@@ -36,7 +36,7 @@ public:
   CGUIDialogMusicInfo(void);
   virtual ~CGUIDialogMusicInfo(void);
   virtual bool OnMessage(CGUIMessage& message);
-  virtual bool OnAction(const CAction &action);
+  virtual bool OnInfo(int actionID);
   void SetAlbum(const CAlbum& album, const std::string &path);
   void SetArtist(const CArtist& artist, const std::string &path);
   bool NeedRefresh() const;

@@ -37,6 +37,7 @@ protected:
   virtual void OnInitWindow();
   virtual void OnDeinitWindow(int nextWindowID);
   virtual bool OnAction(const CAction& action);
+  virtual bool OnInfo(int actionID);
   void UpdatePictureInfo();
 
   CFileItemList* m_pictureInfo;

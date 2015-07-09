@@ -33,6 +33,7 @@ public:
   virtual bool OnMessage(CGUIMessage& message);
   void SetSong(CFileItem *item);
   virtual bool OnAction(const CAction &action);
+  virtual bool OnInfo(int actionID);
   virtual bool OnBack(int actionID);
   bool NeedsUpdate() const { return m_needsUpdate; };
 

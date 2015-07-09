@@ -142,12 +142,13 @@ bool CGUIDialogSongInfo::OnAction(const CAction &action)
       SetRating(rating - 1);
     return true;
   }
-  else if (action.GetID() == ACTION_SHOW_INFO)
-  {
-    Close();
-    return true;
-  }
   return CGUIDialog::OnAction(action);
+}
+
+bool CGUIDialogSongInfo::OnInfo(int actionID)
+{
+  Close();
+  return true;
 }
 
 bool CGUIDialogSongInfo::OnBack(int actionID)

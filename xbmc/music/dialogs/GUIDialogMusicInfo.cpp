@@ -133,14 +133,10 @@ bool CGUIDialogMusicInfo::OnMessage(CGUIMessage& message)
   return CGUIDialog::OnMessage(message);
 }
 
-bool CGUIDialogMusicInfo::OnAction(const CAction &action)
+bool CGUIDialogMusicInfo::OnInfo(int actionID)
 {
-  if (action.GetID() == ACTION_SHOW_INFO)
-  {
-    Close();
-    return true;
-  }
-  return CGUIDialog::OnAction(action);
+  Close();
+  return true;
 }
 
 void CGUIDialogMusicInfo::SetAlbum(const CAlbum& album, const std::string &path)

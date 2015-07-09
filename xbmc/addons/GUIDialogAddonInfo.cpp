@@ -134,14 +134,10 @@ default:
   return CGUIDialog::OnMessage(message);
 }
 
-bool CGUIDialogAddonInfo::OnAction(const CAction &action)
+bool CGUIDialogAddonInfo::OnInfo(int actionID)
 {
-  if (action.GetID() == ACTION_SHOW_INFO)
-  {
-    Close();
-    return true;
-  }
-  return CGUIDialog::OnAction(action);
+  Close();
+  return true;
 }
 
 void CGUIDialogAddonInfo::OnInitWindow()

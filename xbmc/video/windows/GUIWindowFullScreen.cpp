@@ -175,18 +175,6 @@ bool CGUIWindowFullScreen::OnAction(const CAction &action)
     return true;
     break;
 
-  case ACTION_SHOW_INFO:
-    {
-      CGUIDialogFullScreenInfo* pDialog = (CGUIDialogFullScreenInfo*)g_windowManager.GetWindow(WINDOW_DIALOG_FULLSCREEN_INFO);
-      if (pDialog)
-      {
-        CFileItem item(g_application.CurrentFileItem());
-        pDialog->Open();
-        return true;
-      }
-      break;
-    }
-
   case REMOTE_0:
   case REMOTE_1:
   case REMOTE_2:
@@ -236,6 +224,17 @@ bool CGUIWindowFullScreen::OnAction(const CAction &action)
   }
 
   return CGUIWindow::OnAction(action);
+}
+
+bool CGUIWindowFullScreen::OnInfo(int actionID)
+{
+  CGUIDialogFullScreenInfo* pDialog = (CGUIDialogFullScreenInfo*)g_windowManager.GetWindow(WINDOW_DIALOG_FULLSCREEN_INFO);
+  if (pDialog)
+  {
+    CFileItem item(g_application.CurrentFileItem());
+    pDialog->Open();
+  }
+  return true;
 }
 
 void CGUIWindowFullScreen::ClearBackground()

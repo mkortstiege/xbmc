@@ -222,14 +222,10 @@ void CGUIDialogVideoInfo::OnInitWindow()
   CGUIDialog::OnInitWindow();
 }
 
-bool CGUIDialogVideoInfo::OnAction(const CAction &action)
+bool CGUIDialogVideoInfo::OnInfo(int actionID)
 {
-  if (action.GetID() == ACTION_SHOW_INFO)
-  {
-    Close();
-    return true;
-  }
-  return CGUIDialog::OnAction(action);
+  Close();
+  return true;
 }
 
 void CGUIDialogVideoInfo::SetMovie(const CFileItem *item)

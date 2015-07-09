@@ -32,7 +32,7 @@ public:
   CGUIDialogVideoInfo(void);
   virtual ~CGUIDialogVideoInfo(void);
   virtual bool OnMessage(CGUIMessage& message);
-  virtual bool OnAction(const CAction &action);
+  virtual bool OnInfo(int actionID);
   void SetMovie(const CFileItem *item);
   bool NeedRefresh() const;
   bool RefreshAll() const;

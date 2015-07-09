@@ -31,13 +31,9 @@ CGUIDialogFullScreenInfo::~CGUIDialogFullScreenInfo(void)
 {
 }
 
-bool CGUIDialogFullScreenInfo::OnAction(const CAction &action)
+bool CGUIDialogFullScreenInfo::OnInfo(int actionID)
 {
-  if (action.GetID() == ACTION_SHOW_INFO)
-  {
-    Close();
-    return true;
-  }
-  return CGUIDialog::OnAction(action);
+  Close();
+  return true;
 }
 
