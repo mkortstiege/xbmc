@@ -353,6 +353,12 @@ bool CGUITextureBase::AllocResources()
   return changed;
 }
 
+float CGUITextureBase::GetFrameRatio() const
+{
+  float fRatio = (GetOrientation() & 4) ? m_frameHeight / m_frameWidth : m_frameWidth / m_frameHeight;
+  return fRatio / g_graphicsContext.GetScalingPixelRatio();
+}
+
 bool CGUITextureBase::CalculateSize()
 {
   if (m_currentFrame >= m_texture.size())
@@ -373,27 +379,19 @@ bool CGUITextureBase::CalculateSize()
 
   if (m_aspect.ratio != CAspectRatio::AR_STRETCH && m_frameWidth && m_frameHeight)
   {
-    // to get the pixel ratio, we must use the SCALED output sizes
-    float pixelRatio = g_graphicsContext.GetScalingPixelRatio();
-
-    float fSourceFrameRatio = m_frameWidth / m_frameHeight;
-    if (GetOrientation() & 4)
-      fSourceFrameRatio = m_frameHeight / m_frameWidth;
-    float fOutputFrameRatio = fSourceFrameRatio / pixelRatio;
-
     // maximize the width
-    newHeight = m_width / fOutputFrameRatio;
+    newHeight = m_width / GetFrameRatio();
 
     if ((m_aspect.ratio == CAspectRatio::AR_SCALE && newHeight < m_height) ||
         (m_aspect.ratio == CAspectRatio::AR_KEEP && newHeight > m_height))
     {
       newHeight = m_height;
-      newWidth = newHeight * fOutputFrameRatio;
+      newWidth = newHeight * GetFrameRatio();
     }
     if (m_aspect.ratio == CAspectRatio::AR_CENTER)
     { // keep original size + center
-      newWidth = m_frameWidth / sqrt(pixelRatio);
-      newHeight = m_frameHeight * sqrt(pixelRatio);
+      newWidth = m_frameWidth / sqrt(g_graphicsContext.GetScalingPixelRatio());
+      newHeight = m_frameHeight * sqrt(g_graphicsContext.GetScalingPixelRatio());
     }
 
     if (m_aspect.align & ASPECT_ALIGN_LEFT)

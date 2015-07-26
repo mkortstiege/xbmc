@@ -131,6 +131,8 @@ protected:
   static void OrientateTexture(CRect &rect, float width, float height, int orientation);
   void ResetAnimState();
 
+  float GetFrameRatio() const;
+
   // functions that our implementation classes handle
   virtual void Allocate() {}; ///< called after our textures have been allocated
   virtual void Free() {};     ///< called after our textures have been freed
