@@ -1348,6 +1348,7 @@ CGUIControl* CGUIControlFactory::Create(int parentID, const CRect &rect, TiXmlEl
       ((CGUIImage *)control)->SetInfo(textureFile);
       ((CGUIImage *)control)->SetAspectRatio(aspect);
       ((CGUIImage *)control)->SetCrossFade(fadeTime);
+      ((CGUIImage *)control)->SetMinWidth(minWidth);
     }
     break;
   case CGUIControl::GUICONTROL_MULTI_IMAGE:

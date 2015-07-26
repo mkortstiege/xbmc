@@ -96,6 +96,7 @@ public:
   virtual float GetYPosition() const { return m_texture.GetYPosition(); }
   virtual float GetWidth() const { return m_texture.GetWidth(); };
   virtual float GetHeight() const { return m_texture.GetHeight(); };
+  virtual void  SetMinWidth(float minWidth) { m_texture.SetMinWidth(minWidth); };
 
   const std::string& GetFileName() const;
   float GetTextureWidth() const;

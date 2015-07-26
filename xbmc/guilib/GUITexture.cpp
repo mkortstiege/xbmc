@@ -63,6 +63,7 @@ CGUITextureBase::CGUITextureBase(float posX, float posY, float width, float heig
 
   m_vertex.SetRect(m_posX, m_posY, m_posX + m_width, m_posY + m_height);
 
+  m_minWidth = 0;
   m_frameWidth = 0;
   m_frameHeight = 0;
 
@@ -97,6 +98,7 @@ CGUITextureBase::CGUITextureBase(const CGUITextureBase &right) :
 
   m_allocateDynamically = right.m_allocateDynamically;
   m_use_cache = right.m_use_cache;
+  m_minWidth = right.m_minWidth;
 
   // defaults
   m_vertex.SetRect(m_posX, m_posY, m_posX + m_width, m_posY + m_height);
@@ -367,17 +369,19 @@ bool CGUITextureBase::CalculateSize()
   m_texCoordsScaleU = 1.0f / m_texture.m_texWidth;
   m_texCoordsScaleV = 1.0f / m_texture.m_texHeight;
 
-  if (m_width == 0)
-    m_width = m_frameWidth;
-  if (m_height == 0)
-    m_height = m_frameHeight;
-
   float newPosX = m_posX;
   float newPosY = m_posY;
-  float newWidth = m_width;
-  float newHeight = m_height;
+  float newWidth = m_width ? m_width : m_frameWidth;
+  float newHeight = m_height ? m_height : m_frameHeight;
 
-  if (m_aspect.ratio != CAspectRatio::AR_STRETCH && m_frameWidth && m_frameHeight)
+  // enforce ratio keep for auto-width
+  if (m_minWidth && m_minWidth != m_width)
+  {
+    m_aspect.ratio = CAspectRatio::AR_KEEP;
+    newWidth = newHeight * GetFrameRatio();
+    SetWidth(newWidth);
+  }
+  else if (m_aspect.ratio != CAspectRatio::AR_STRETCH && m_frameWidth && m_frameHeight)
   {
     // maximize the width
     newHeight = m_width / GetFrameRatio();
@@ -393,20 +397,20 @@ bool CGUITextureBase::CalculateSize()
       newWidth = m_frameWidth / sqrt(g_graphicsContext.GetScalingPixelRatio());
       newHeight = m_frameHeight * sqrt(g_graphicsContext.GetScalingPixelRatio());
     }
-
-    if (m_aspect.align & ASPECT_ALIGN_LEFT)
-      newPosX = m_posX;
-    else if (m_aspect.align & ASPECT_ALIGN_RIGHT)
-      newPosX = m_posX + m_width - newWidth;
-    else
-      newPosX = m_posX + (m_width - newWidth) * 0.5f;
-    if (m_aspect.align & ASPECT_ALIGNY_TOP)
-      newPosY = m_posY;
-    else if (m_aspect.align & ASPECT_ALIGNY_BOTTOM)
-      newPosY = m_posY + m_height - newHeight;
-    else
-      newPosY = m_posY + (m_height - newHeight) * 0.5f;
   }
+
+  if (m_aspect.align & ASPECT_ALIGN_LEFT)
+    newPosX = m_posX;
+  else if (m_aspect.align & ASPECT_ALIGN_RIGHT)
+    newPosX = m_posX + m_width - newWidth;
+  else
+    newPosX = m_posX + (m_width - newWidth) * 0.5f;
+  if (m_aspect.align & ASPECT_ALIGNY_TOP)
+    newPosY = m_posY;
+  else if (m_aspect.align & ASPECT_ALIGNY_BOTTOM)
+    newPosY = m_posY + m_height - newHeight;
+  else
+    newPosY = m_posY + (m_height - newHeight) * 0.5f;
   
   m_vertex.SetRect(newPosX, newPosY, newPosX + newWidth, newPosY + newHeight);
 
@@ -594,6 +598,15 @@ void CGUITextureBase::ResetAnimState()
   m_lasttime = 0;
   m_currentFrame = 0;
   m_currentLoop = 0;
+}
+
+void CGUITextureBase::SetMinWidth(float minWidth)
+{
+  if (m_minWidth != minWidth)
+  {
+    m_minWidth = minWidth;
+    m_invalid = true;
+  }
 }
 
 bool CGUITextureBase::SetWidth(float width)

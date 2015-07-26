@@ -106,6 +106,7 @@ public:
   bool SetFileName(const std::string &filename);
   void SetUseCache(const bool useCache = true);
   bool SetAspectRatio(const CAspectRatio &aspect);
+  void SetMinWidth(float minWidth);
 
   const std::string& GetFileName() const { return m_info.filename; };
   float GetTextureWidth() const { return m_frameWidth; };
@@ -147,6 +148,7 @@ protected:
   float m_posY;
   float m_width;
   float m_height;
+  float m_minWidth;
 
   CRect m_vertex;       // vertex coords to render
   bool m_invalid;       // if true, we need to recalculate
