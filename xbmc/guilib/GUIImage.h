@@ -92,6 +92,11 @@ public:
   virtual std::string GetDescription() const;
   void SetCrossFade(unsigned int time);
 
+  virtual float GetXPosition() const { return m_texture.GetXPosition(); }
+  virtual float GetYPosition() const { return m_texture.GetYPosition(); }
+  virtual float GetWidth() const { return m_texture.GetWidth(); };
+  virtual float GetHeight() const { return m_texture.GetHeight(); };
+
   const std::string& GetFileName() const;
   float GetTextureWidth() const;
   float GetTextureHeight() const;
