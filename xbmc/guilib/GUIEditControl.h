@@ -90,6 +90,7 @@ protected:
   virtual void RenderText();
   virtual CGUILabel::COLOR GetTextColor() const;
   std::wstring GetDisplayedText() const;
+  std::string GetDescription() const;
   std::string GetDescriptionByIndex(int index) const;
   bool SetStyledText(const std::wstring &text);
   void RecalcLabelPosition();
@@ -106,6 +107,8 @@ protected:
    \return true if the password is cleared, false otherwise.
    */
   bool ClearMD5();
+
+  bool HasPasswordInput() const;
   
   std::wstring m_text2;
   std::string  m_text;

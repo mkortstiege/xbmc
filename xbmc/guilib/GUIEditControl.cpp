@@ -29,6 +29,7 @@
 #include "LocalizeStrings.h"
 #include "XBDateTime.h"
 #include "windowing/WindowingFactory.h"
+#include "utils/log.h"
 #include "utils/md5.h"
 #include "GUIUserMessages.h"
 
@@ -752,8 +753,29 @@ void CGUIEditControl::SetFocus(bool focus)
   SetInvalid();
 }
 
+bool CGUIEditControl::HasPasswordInput() const
+{
+  return (m_inputType == INPUT_TYPE_PASSWORD || m_inputType == INPUT_TYPE_PASSWORD_MD5);
+}
+
+std::string CGUIEditControl::GetDescription() const
+{
+  if (HasPasswordInput())
+  {
+    CLog::Log(LOGWARNING, "%s: Input type is password. Return value will be empty.", __FUNCTION__);
+    return "";
+  }
+  return GetDescription();
+}
+
 std::string CGUIEditControl::GetDescriptionByIndex(int index) const
 {
+  if (HasPasswordInput())
+  {
+    CLog::Log(LOGWARNING, "%s: Input type is password. Return value will be empty.", __FUNCTION__);
+    return "";
+  }
+
   if (index == 0)
     return GetDescription();
   else if(index == 1)
