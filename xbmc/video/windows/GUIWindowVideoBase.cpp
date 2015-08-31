@@ -214,19 +214,9 @@ void CGUIWindowVideoBase::OnInfo(CFileItem* pItem, ADDON::ScraperPtr& scraper)
   // ShowIMDB can kill the item as this window can be closed while we do it,
   // so take a copy of the item now
   CFileItem item(*pItem);
-  bool fromDB = false;
-  if ((item.IsVideoDb() && item.HasVideoInfoTag()) ||
-      (item.HasVideoInfoTag() && item.GetVideoInfoTag()->m_iDbId != -1))
-  {
-    if (item.GetVideoInfoTag()->m_type == MediaTypeSeason)
-    { // clear out the art - we're really grabbing the info on the show here
-      item.ClearArt();
-      item.GetVideoInfoTag()->m_iDbId = item.GetVideoInfoTag()->m_iIdShow;
-    }
-    item.SetPath(item.GetVideoInfoTag()->GetPath());
-    fromDB = true;
-  }
-  else
+  bool fromDB = (item.IsVideoDb() && item.HasVideoInfoTag());
+
+  if (!fromDB)
   {
     if (item.m_bIsFolder && scraper && scraper->Content() != CONTENT_TVSHOWS)
     {
@@ -317,10 +307,10 @@ bool CGUIWindowVideoBase::ShowIMDB(CFileItemPtr item, const ScraperPtr &info2, b
 
   // 1.  Check for already downloaded information, and if we have it, display our dialog
   //     Return if no Refresh is needed.
-  bool bHasInfo=false;
+  bool bHasInfo(fromDB);
 
   CVideoInfoTag movieDetails;
-  if (info)
+  if (!bHasInfo && info)
   {
     m_database.Open(); // since we can be called from the music library
 
@@ -368,6 +358,18 @@ bool CGUIWindowVideoBase::ShowIMDB(CFileItemPtr item, const ScraperPtr &info2, b
   {
     bHasInfo = true;
     movieDetails = *item->GetVideoInfoTag();
+
+    if (movieDetails.m_type == MediaTypeSeason)
+    {
+      std::string newTitle = movieDetails.m_strShowTitle;
+
+      if (movieDetails.m_iSeason <= 0)
+        movieDetails.m_iDbId = movieDetails.m_iIdShow;
+      else
+        newTitle += " - " + StringUtils::Format(g_localizeStrings.Get(20358).c_str(), movieDetails.m_iSeason);
+
+      movieDetails.SetTitle(newTitle);
+    }
   }
   
   bool needsRefresh = false;
