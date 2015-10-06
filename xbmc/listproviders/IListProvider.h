@@ -71,6 +71,16 @@ public:
    */
   virtual bool OnClick(const CGUIListItemPtr &item)=0;
 
+  /*! \brief Focus event on an item.
+   \param item the item that was focused.
+   */
+  virtual void OnFocus(const CGUIListItemPtr &item) {};
+
+  /*! \brief UnFocus event on an item.
+   \param item the item that was unfocused.
+   */
+  virtual void OnUnFocus(const CGUIListItemPtr &item) {};
+
   /*! \brief Set the default item to focus. For backwards compatibility.
    \param item the item to focus.
    \param always whether this item should always be used on first focus.

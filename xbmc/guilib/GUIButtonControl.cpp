@@ -363,16 +363,6 @@ void CGUIButtonControl::OnClick()
   clickActions.ExecuteActions(controlID, parentID);
 }
 
-void CGUIButtonControl::OnFocus()
-{
-  m_focusActions.ExecuteActions(GetID(), GetParentID());
-}
-
-void CGUIButtonControl::OnUnFocus()
-{
-  m_unfocusActions.ExecuteActions(GetID(), GetParentID());
-}
-
 void CGUIButtonControl::SetSelected(bool bSelected)
 {
   if (m_bSelected != bSelected)

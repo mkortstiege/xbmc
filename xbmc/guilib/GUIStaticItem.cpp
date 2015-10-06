@@ -45,6 +45,8 @@ CGUIStaticItem::CGUIStaticItem(const TiXmlElement *item, int parentID) : CFileIt
     CGUIControlFactory::GetConditionalVisibility(item, condition);
     SetVisibleCondition(condition, parentID);
     CGUIControlFactory::GetActions(item, "onclick", m_clickActions);
+    CGUIControlFactory::GetActions(item, "onfocus", m_focusActions);
+    CGUIControlFactory::GetActions(item, "ononfocus", m_unfocusActions);
     SetLabel(label.GetLabel(parentID));
     SetLabel2(label2.GetLabel(parentID));
     SetArt("thumb", thumb.GetLabel(parentID, true));

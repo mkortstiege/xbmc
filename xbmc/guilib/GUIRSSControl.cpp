@@ -71,11 +71,13 @@ CGUIRSSControl::~CGUIRSSControl(void)
 void CGUIRSSControl::OnFocus()
 {
   m_stopped = true;
+  CGUIControl::OnFocus();
 }
 
 void CGUIRSSControl::OnUnFocus()
 {
   m_stopped = false;
+  CGUIControl::OnUnFocus();
 }
 
 void CGUIRSSControl::SetUrlSet(const int urlset)

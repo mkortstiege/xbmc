@@ -1287,6 +1287,12 @@ void CGUIBaseContainer::GetCacheOffsets(int &cacheBefore, int &cacheAfter) const
 void CGUIBaseContainer::SetCursor(int cursor)
 {
   m_cursor = cursor;
+
+  if (m_listProvider)
+  {
+    if (cursor >= 0 && cursor < (int)m_items.size())
+      m_listProvider->OnFocus(m_items[cursor]);
+  }
 }
 
 void CGUIBaseContainer::SetOffset(int offset)

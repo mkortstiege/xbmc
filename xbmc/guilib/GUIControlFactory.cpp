@@ -1209,8 +1209,6 @@ CGUIControl* CGUIControlFactory::Create(int parentID, const CRect &rect, TiXmlEl
       ((CGUIButtonControl *)control)->SetLabel2(strLabel2);
       ((CGUIButtonControl *)control)->SetMinWidth(minWidth);
       ((CGUIButtonControl *)control)->SetClickActions(clickActions);
-      ((CGUIButtonControl *)control)->SetFocusActions(focusActions);
-      ((CGUIButtonControl *)control)->SetUnFocusActions(unfocusActions);
     }
     break;
   case CGUIControl::GUICONTROL_TOGGLEBUTTON:
@@ -1226,8 +1224,6 @@ CGUIControl* CGUIControlFactory::Create(int parentID, const CRect &rect, TiXmlEl
       ((CGUIToggleButtonControl *)control)->SetMinWidth(minWidth);
       ((CGUIToggleButtonControl *)control)->SetClickActions(clickActions);
       ((CGUIToggleButtonControl *)control)->SetAltClickActions(altclickActions);
-      ((CGUIToggleButtonControl *)control)->SetFocusActions(focusActions);
-      ((CGUIToggleButtonControl *)control)->SetUnFocusActions(unfocusActions);
       ((CGUIToggleButtonControl *)control)->SetToggleSelect(toggleSelect);
     }
     break;
@@ -1254,8 +1250,6 @@ CGUIControl* CGUIControlFactory::Create(int parentID, const CRect &rect, TiXmlEl
       ((CGUIRadioButtonControl *)control)->SetRadioDimensions(radioPosX, radioPosY, radioWidth, radioHeight);
       ((CGUIRadioButtonControl *)control)->SetToggleSelect(toggleSelect);
       ((CGUIRadioButtonControl *)control)->SetClickActions(clickActions);
-      ((CGUIRadioButtonControl *)control)->SetFocusActions(focusActions);
-      ((CGUIRadioButtonControl *)control)->SetUnFocusActions(unfocusActions);
     }
     break;
   case CGUIControl::GUICONTROL_MULTISELECT:
@@ -1492,6 +1486,8 @@ CGUIControl* CGUIControlFactory::Create(int parentID, const CRect &rect, TiXmlEl
     control->SetColorDiffuse(colorDiffuse);
     control->SetNavigationActions(actions);
     control->SetPulseOnSelect(bPulse);
+    control->SetFocusActions(focusActions);
+    control->SetUnFocusActions(unfocusActions);
     if (hasCamera)
       control->SetCamera(camera);
     control->SetStereoFactor(stereo);

@@ -88,12 +88,16 @@ public:
   void SetVisibleCondition(const std::string &condition, int context);
 
   const CGUIAction &GetClickActions() const { return m_clickActions; };
+  const CGUIAction &GetFocusActions() const { return m_focusActions; };
+  const CGUIAction &GetUnFocusActions() const { return m_unfocusActions; };
 private:
   typedef std::vector< std::pair<CGUIInfoLabel, std::string> > InfoVector;
   InfoVector m_info;
   INFO::InfoPtr m_visCondition;
   bool m_visState;
   CGUIAction m_clickActions;
+  CGUIAction m_focusActions;
+  CGUIAction m_unfocusActions;
 };
 
 typedef std::shared_ptr<CGUIStaticItem> CGUIStaticItemPtr;

@@ -107,8 +107,8 @@ public:
   virtual bool OnBack();
   virtual void OnNextControl();
   virtual void OnPrevControl();
-  virtual void OnFocus() {};
-  virtual void OnUnFocus() {};
+  virtual void OnFocus();
+  virtual void OnUnFocus();
 
   /*! \brief React to a mouse event
 
@@ -240,6 +240,10 @@ public:
   virtual bool IsContainer() const { return false; };
   virtual bool GetCondition(int condition, int data) const { return false; };
 
+  // focus actions
+  void SetFocusActions(const CGUIAction& focusActions) { m_focusActions = focusActions; };
+  void SetUnFocusActions(const CGUIAction& unfocusActions) { m_unfocusActions = unfocusActions; };
+
   void SetParentControl(CGUIControl *control) { m_parentControl = control; };
   CGUIControl *GetParentControl(void) const { return m_parentControl; };
   virtual void SaveStates(std::vector<CControlState> &states);
@@ -320,6 +324,10 @@ protected:
 
   // navigation and actions
   ActionMap m_actions;
+
+  // focus actions
+  CGUIAction m_focusActions;
+  CGUIAction m_unfocusActions;
 
   float m_posX;
   float m_posY;

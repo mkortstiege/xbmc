@@ -122,3 +122,15 @@ bool CStaticListProvider::OnClick(const CGUIListItemPtr &item)
   CGUIStaticItemPtr staticItem = std::static_pointer_cast<CGUIStaticItem>(item);
   return staticItem->GetClickActions().ExecuteActions(0, m_parentID);
 }
+
+void CStaticListProvider::OnFocus(const CGUIListItemPtr &item)
+{
+  CGUIStaticItemPtr staticItem = std::static_pointer_cast<CGUIStaticItem>(item);
+  staticItem->GetFocusActions().ExecuteActions(0, m_parentID);
+}
+
+void CStaticListProvider::OnUnFocus(const CGUIListItemPtr &item)
+{
+  CGUIStaticItemPtr staticItem = std::static_pointer_cast<CGUIStaticItem>(item);
+  staticItem->GetUnFocusActions().ExecuteActions(0, m_parentID);
+}

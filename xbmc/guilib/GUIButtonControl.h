@@ -60,8 +60,6 @@ public:
   virtual void SetLabel2(const std::string & aLabel2);
   void SetClickActions(const CGUIAction& clickActions) { m_clickActions = clickActions; };
   const CGUIAction &GetClickActions() const { return m_clickActions; };
-  void SetFocusActions(const CGUIAction& focusActions) { m_focusActions = focusActions; };
-  void SetUnFocusActions(const CGUIAction& unfocusActions) { m_unfocusActions = unfocusActions; };
   const CLabelInfo& GetLabelInfo() const { return m_label.GetLabelInfo(); };
   virtual std::string GetLabel() const { return GetDescription(); };
   virtual std::string GetLabel2() const;
@@ -84,8 +82,6 @@ public:
 protected:
   friend class CGUISpinControlEx;
   virtual EVENT_RESULT OnMouseEvent(const CPoint &point, const CMouseEvent &event);
-  void OnFocus();
-  void OnUnFocus();
   virtual void ProcessText(unsigned int currentTime);
   virtual void RenderText();
   virtual CGUILabel::COLOR GetTextColor() const;
