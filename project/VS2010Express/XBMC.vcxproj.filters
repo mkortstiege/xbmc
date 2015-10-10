@@ -6328,6 +6328,9 @@
     <ClInclude Include="..\..\xbmc\input\InputCodingTableKorean.h">
       <Filter>input</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\xbmc\utils\Random.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\xbmc\win32\XBMC_PC.rc">
