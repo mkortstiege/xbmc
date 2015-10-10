@@ -26,7 +26,7 @@ namespace KODI
 namespace UTILS
 {
 template<class TIterator>
-void RandomShuffle(TIterator& begin, TIterator& end)
+void RandomShuffle(TIterator begin, TIterator end)
 {
   std::random_device rd;
   std::mt19937 mt(rd());
