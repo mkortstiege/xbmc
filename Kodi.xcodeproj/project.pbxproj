@@ -152,7 +152,6 @@
 		3802709A13D5A653009493DD /* SystemClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3802709813D5A653009493DD /* SystemClock.cpp */; };
 		384718D81325BA04000486D6 /* XBDateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 384718D61325BA04000486D6 /* XBDateTime.cpp */; };
 		38F4E57013CCCB3B00664821 /* Implementation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38F4E56C13CCCB3B00664821 /* Implementation.cpp */; };
-		391416BF1B4A3EFA00BBF0AA /* guiinfo in Resources */ = {isa = PBXBuildFile; fileRef = 391416BE1B4A3EFA00BBF0AA /* guiinfo */; };
 		395897151AAD94F00033D27C /* KeyboardLayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 395897131AAD94F00033D27C /* KeyboardLayoutManager.cpp */; };
 		395897161AAD94F00033D27C /* KeyboardLayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 395897131AAD94F00033D27C /* KeyboardLayoutManager.cpp */; };
 		395938771AC310B00053A590 /* MessagePrinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 395938751AC310B00053A590 /* MessagePrinter.cpp */; };
@@ -223,6 +222,10 @@
 		39BD2AD91B845D40004A5A15 /* DialogHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39BD2AD71B845D40004A5A15 /* DialogHelper.cpp */; };
 		39C38CCA1BBFF1EE000F59F5 /* InputCodingTableKorean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C38CC81BBFF1EE000F59F5 /* InputCodingTableKorean.cpp */; };
 		39C38CCB1BBFF1EE000F59F5 /* InputCodingTableKorean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C38CC81BBFF1EE000F59F5 /* InputCodingTableKorean.cpp */; };
+		39C38CD41BCA6354000F59F5 /* FileItemInfoProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C38CD21BCA6354000F59F5 /* FileItemInfoProvider.cpp */; settings = {ASSET_TAGS = (); }; };
+		39C38CD51BCA6354000F59F5 /* FileItemInfoProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C38CD21BCA6354000F59F5 /* FileItemInfoProvider.cpp */; settings = {ASSET_TAGS = (); }; };
+		39C38CD91BCA6362000F59F5 /* RadioRDSInfoProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C38CD61BCA6362000F59F5 /* RadioRDSInfoProvider.cpp */; settings = {ASSET_TAGS = (); }; };
+		39C38CDA1BCA6362000F59F5 /* RadioRDSInfoProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C38CD61BCA6362000F59F5 /* RadioRDSInfoProvider.cpp */; settings = {ASSET_TAGS = (); }; };
 		4260D5C71B67BB8F003F6F2D /* GUIWindowSplash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4260D5C51B67BB8F003F6F2D /* GUIWindowSplash.cpp */; };
 		4260D5C81B67BB8F003F6F2D /* GUIWindowSplash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4260D5C51B67BB8F003F6F2D /* GUIWindowSplash.cpp */; };
 		42DAC16E1A6E789E0066B4C8 /* PVRActionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42DAC16C1A6E789E0066B4C8 /* PVRActionListener.cpp */; };
@@ -2545,7 +2548,6 @@
 		38F4E56C13CCCB3B00664821 /* Implementation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Implementation.cpp; sourceTree = "<group>"; };
 		38F4E56D13CCCB3B00664821 /* README.platform */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.platform; sourceTree = "<group>"; };
 		38F4E56E13CCCB3B00664821 /* ThreadLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadLocal.h; sourceTree = "<group>"; };
-		391416BE1B4A3EFA00BBF0AA /* guiinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; name = guiinfo; path = xbmc/guiinfo; sourceTree = SOURCE_ROOT; };
 		395897131AAD94F00033D27C /* KeyboardLayoutManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardLayoutManager.cpp; sourceTree = "<group>"; };
 		395897141AAD94F00033D27C /* KeyboardLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardLayoutManager.h; sourceTree = "<group>"; };
 		395938731AC28F5A0053A590 /* EmbeddedArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedArt.h; sourceTree = "<group>"; };
@@ -2618,6 +2620,11 @@
 		39BD2AD71B845D40004A5A15 /* DialogHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DialogHelper.cpp; path = helpers/DialogHelper.cpp; sourceTree = "<group>"; };
 		39C38CC81BBFF1EE000F59F5 /* InputCodingTableKorean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputCodingTableKorean.cpp; sourceTree = "<group>"; };
 		39C38CC91BBFF1EE000F59F5 /* InputCodingTableKorean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCodingTableKorean.h; sourceTree = "<group>"; };
+		39C38CD21BCA6354000F59F5 /* FileItemInfoProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileItemInfoProvider.cpp; path = guiinfo/FileItemInfoProvider.cpp; sourceTree = "<group>"; };
+		39C38CD31BCA6354000F59F5 /* FileItemInfoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileItemInfoProvider.h; path = guiinfo/FileItemInfoProvider.h; sourceTree = "<group>"; };
+		39C38CD61BCA6362000F59F5 /* RadioRDSInfoProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RadioRDSInfoProvider.cpp; path = guiinfo/RadioRDSInfoProvider.cpp; sourceTree = "<group>"; };
+		39C38CD71BCA6362000F59F5 /* RadioRDSInfoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioRDSInfoProvider.h; path = guiinfo/RadioRDSInfoProvider.h; sourceTree = "<group>"; };
+		39C38CD81BCA6362000F59F5 /* GUIInfoLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GUIInfoLabels.h; path = guiinfo/GUIInfoLabels.h; sourceTree = "<group>"; };
 		4260D5C51B67BB8F003F6F2D /* GUIWindowSplash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIWindowSplash.cpp; sourceTree = "<group>"; };
 		4260D5C61B67BB8F003F6F2D /* GUIWindowSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIWindowSplash.h; sourceTree = "<group>"; };
 		42DAC16B1A6E780C0066B4C8 /* IActionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IActionListener.h; sourceTree = "<group>"; };
@@ -4988,7 +4995,6 @@
 		18B7C3AA1294219F009E7A26 /* guilib */ = {
 			isa = PBXGroup;
 			children = (
-				391416BE1B4A3EFA00BBF0AA /* guiinfo */,
 				DF404A3416B9896C00D8023E /* cximage.cpp */,
 				DF404A3516B9896C00D8023E /* cximage.h */,
 				18B7C7561294222E009E7A26 /* D3DResource.cpp */,
@@ -5412,6 +5418,18 @@
 				39BD2AD61B845D40004A5A15 /* DialogHelper.h */,
 			);
 			name = helpers;
+			sourceTree = "<group>";
+		};
+		39C38CD11BCA6315000F59F5 /* guiinfo */ = {
+			isa = PBXGroup;
+			children = (
+				39C38CD21BCA6354000F59F5 /* FileItemInfoProvider.cpp */,
+				39C38CD31BCA6354000F59F5 /* FileItemInfoProvider.h */,
+				39C38CD81BCA6362000F59F5 /* GUIInfoLabels.h */,
+				39C38CD61BCA6362000F59F5 /* RadioRDSInfoProvider.cpp */,
+				39C38CD71BCA6362000F59F5 /* RadioRDSInfoProvider.h */,
+			);
+			name = guiinfo;
 			sourceTree = "<group>";
 		};
 		430C880812D649B10098821A /* powermanagement */ = {
@@ -7300,6 +7318,7 @@
 				DF29BCD41B5D911700904347 /* events */,
 				431376E912D6439900680C15 /* dialogs */,
 				E38E16940D25F9FA00618676 /* filesystem */,
+				39C38CD11BCA6315000F59F5 /* guiinfo */,
 				18B7C3AA1294219F009E7A26 /* guilib */,
 				18B7C8C61294252E009E7A26 /* input */,
 				4367217312D6640E002508E6 /* interfaces */,
@@ -8960,7 +8979,6 @@
 				7CCDA1E4192753E30074CF51 /* RdrConnectionManagerSCPD.xml in Resources */,
 				7CCDA1EF192753E30074CF51 /* RenderingControlSCPD.xml in Resources */,
 				7CCDA1F1192753E30074CF51 /* RenderingControlSCPD_Full.xml in Resources */,
-				391416BF1B4A3EFA00BBF0AA /* guiinfo in Resources */,
 				7CCDA1FC192753E30074CF51 /* ConnectionManagerSCPD.xml in Resources */,
 				7CCDA207192753E30074CF51 /* ContentDirectorySCPD.xml in Resources */,
 				7CCDA212192753E30074CF51 /* ContentDirectorywSearchSCPD.xml in Resources */,
@@ -9208,6 +9226,7 @@
 				E38E1FEC0D25F9FD00618676 /* RenderManager.cpp in Sources */,
 				E38E1FF00D25F9FD00618676 /* VideoFilterShader.cpp in Sources */,
 				E38E1FF10D25F9FD00618676 /* YUV2RGBShader.cpp in Sources */,
+				39C38CD41BCA6354000F59F5 /* FileItemInfoProvider.cpp in Sources */,
 				E38E1FF70D25F9FD00618676 /* CueDocument.cpp in Sources */,
 				E38E1FF80D25F9FD00618676 /* Database.cpp in Sources */,
 				E38E1FFA0D25F9FD00618676 /* DetectDVDType.cpp in Sources */,
@@ -9550,6 +9569,7 @@
 				7C779E3B104A57E500F444C4 /* RenderSystemGL.cpp in Sources */,
 				7C779E3C104A57E500F444C4 /* WinEventsSDL.cpp in Sources */,
 				395C2A241AA4C32100EBC7AD /* AudioDecoder.cpp in Sources */,
+				39C38CD91BCA6362000F59F5 /* RadioRDSInfoProvider.cpp in Sources */,
 				7C779E3D104A57E500F444C4 /* WinSystem.cpp in Sources */,
 				7C779E3E104A57E500F444C4 /* WinSystemOSX.mm in Sources */,
 				7C779E3F104A57E500F444C4 /* WinSystemOSXGL.mm in Sources */,
@@ -10683,6 +10703,7 @@
 				E499132C174E5DAD00741B6D /* TextureDX.cpp in Sources */,
 				E499132D174E5DAD00741B6D /* TextureGL.cpp in Sources */,
 				E499132E174E5DAD00741B6D /* TextureManager.cpp in Sources */,
+				39C38CD51BCA6354000F59F5 /* FileItemInfoProvider.cpp in Sources */,
 				E499132F174E5DAD00741B6D /* VisibleEffect.cpp in Sources */,
 				E4991330174E5DAD00741B6D /* XBTF.cpp in Sources */,
 				DFEA4B541B5271F200562321 /* ActiveAEDSPDatabase.cpp in Sources */,
@@ -10941,6 +10962,7 @@
 				E4991454174E605900741B6D /* GLUtils.cpp in Sources */,
 				E4991455174E605900741B6D /* GroupUtils.cpp in Sources */,
 				E4991457174E605900741B6D /* HTMLUtil.cpp in Sources */,
+				39C38CDA1BCA6362000F59F5 /* RadioRDSInfoProvider.cpp in Sources */,
 				E4991458174E605900741B6D /* HttpHeader.cpp in Sources */,
 				E4991459174E605900741B6D /* HttpParser.cpp in Sources */,
 				E499145A174E605900741B6D /* HttpResponse.cpp in Sources */,
