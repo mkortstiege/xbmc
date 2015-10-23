@@ -39,6 +39,7 @@ CGUIPanelContainer::~CGUIPanelContainer(void)
 
 void CGUIPanelContainer::Process(unsigned int currentTime, CDirtyRegionList &dirtyregions)
 {
+  UpdateAutoScrolling(currentTime);
   ValidateOffset();
 
   if (m_bInvalidated)
@@ -93,6 +94,8 @@ void CGUIPanelContainer::Process(unsigned int currentTime, CDirtyRegionList &dir
   // when we are scrolling up, offset will become lower (integer division, see offset calc)
   // to have same behaviour when scrolling down, we need to set page control to offset+1
   UpdatePageControl(offset + (m_scroller.IsScrollingDown() ? 1 : 0));
+
+  m_lastRenderTime = currentTime;
 
   CGUIControl::Process(currentTime, dirtyregions);
 }
@@ -377,6 +380,8 @@ bool CGUIPanelContainer::MoveRight(bool wrapAround)
 // scrolls the said amount
 void CGUIPanelContainer::Scroll(int amount)
 {
+  ResetAutoScrolling();
+
   // increase or decrease the offset
   int offset = GetOffset() + amount;
   if (offset > ((int)GetRows() - m_itemsPerPage) * m_itemsPerRow)
